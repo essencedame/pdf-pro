@@ -1,0 +1,1637 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Préparation de Séance — Essence de Soi</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Poppins:wght@300;400;500;600&display=swap');
+:root {
+  --vert:#426a62;--vert-cl:#5a8a7f;--or:#c9a96e;--or-cl:#e8d5b0;
+  --creme:#f4f0e8;--blanc:#ffffff;--gris:#7a7a7a;--gris-cl:#ece8e0;
+  --text:#1a1a1a;--border:#ddd8cf;--rouge:#c0392b;--noir:#1c1c1c;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Poppins',sans-serif;background:var(--creme);color:var(--text);min-height:100vh}
+
+/* ── HEADER ── */
+header{
+  background:var(--creme);
+  text-align:center;
+  padding:40px 20px 32px;
+  border-bottom:1px solid var(--border);
+}
+.header-brand{
+  font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--gris);margin-bottom:16px;font-family:'Poppins',sans-serif;font-weight:400;
+}
+.header-logo{margin:0 auto 18px;display:block}
+header h1{
+  font-family:'Playfair Display',serif;font-size:2.6rem;font-weight:300;
+  letter-spacing:.02em;color:var(--text);line-height:1.15;margin-bottom:6px;
+}
+.header-sub{
+  font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--vert);font-weight:500;
+}
+
+main{max-width:900px;margin:0 auto;padding:36px 20px 80px}
+
+/* INTRO */
+.intro-box{background:var(--blanc);border:1px solid var(--border);border-radius:12px;
+  padding:28px 32px;margin-bottom:28px}
+.intro-box h2{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:500;
+  color:var(--vert);margin-bottom:14px}
+.intro-box p{font-size:.87rem;line-height:1.75;color:#444;margin-bottom:12px}
+.intro-box ul{padding-left:0;list-style:none;margin:14px 0}
+.intro-box li{font-size:.87rem;line-height:1.6;color:#444;margin-bottom:8px;
+  padding-left:22px;position:relative}
+.intro-box li::before{content:'✦';position:absolute;left:0;color:var(--vert);font-size:.78rem}
+.intro-box .intro-note{background:var(--creme);border-left:3px solid var(--vert);
+  padding:12px 16px;border-radius:0 8px 8px 0;font-size:.85rem;line-height:1.7;
+  color:#3a3a3a;margin-top:16px}
+.intro-box .intro-note strong{color:var(--vert)}
+
+/* FLOW */
+.flow{display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-bottom:32px}
+.flow-step{font-size:.7rem;text-transform:uppercase;letter-spacing:.07em;color:var(--gris);
+  padding:5px 14px;border-radius:20px;border:1px solid var(--border);background:var(--blanc);white-space:nowrap}
+.flow-step.active{background:var(--noir);color:var(--blanc);border-color:var(--noir)}
+.flow-step.done{background:var(--gris-cl);color:var(--vert)}
+.flow-arrow{color:var(--border);font-size:.9rem}
+
+/* CARDS */
+.card{background:var(--blanc);border:1px solid var(--border);border-radius:12px;padding:26px 30px;margin-bottom:18px}
+.card h2{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:400;color:var(--vert);
+  margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px}
+.card h3{font-family:'Playfair Display',serif;font-size:1.05rem;color:var(--vert-cl);margin:16px 0 8px}
+
+/* PDF UPLOAD */
+.upload-zone{border:2px dashed var(--border);border-radius:12px;background:var(--blanc);
+  padding:40px 32px;text-align:center;cursor:pointer;transition:all .25s;margin-bottom:18px}
+.upload-zone:hover,.upload-zone.drag{border-color:var(--vert);background:var(--gris-cl)}
+.upload-zone .icon{font-size:2.2rem;margin-bottom:10px}
+.upload-zone h2{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:400;color:var(--vert);margin-bottom:6px}
+.upload-zone p{font-size:.82rem;color:var(--gris)}
+.upload-zone input{display:none}
+
+/* PDF VIEWER */
+.pdf-viewer-wrap{background:var(--blanc);border:1px solid var(--border);border-radius:12px;
+  padding:16px;margin-bottom:18px;display:none}
+.pdf-viewer-wrap h3{font-size:.75rem;text-transform:uppercase;letter-spacing:.08em;color:var(--gris);
+  margin-bottom:12px;display:flex;align-items:center;justify-content:space-between}
+#pdf-canvas{width:100%;border-radius:6px;display:block;cursor:pointer}
+.pdf-hint{font-size:.76rem;color:var(--gris);text-align:center;margin-top:8px;font-style:italic}
+
+/* SAISIE GRILLE */
+.saisie-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:12px;margin-bottom:20px}
+.saisie-item label{display:block;font-size:.68rem;text-transform:uppercase;letter-spacing:.08em;color:var(--gris);margin-bottom:4px}
+.saisie-item input,.saisie-item select{width:100%;border:1px solid var(--border);border-radius:8px;
+  padding:8px 10px;font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;
+  background:var(--creme);color:var(--vert);text-align:center;transition:border-color .2s}
+.saisie-item input:focus,.saisie-item select:focus{outline:none;border-color:var(--vert);background:var(--blanc)}
+
+/* INCLUSION GRILLE */
+.inc-grid{display:grid;grid-template-columns:repeat(9,1fr);gap:6px;margin-bottom:16px}
+.inc-cell{text-align:center}
+.inc-cell .n{font-size:.65rem;color:var(--gris);display:block;margin-bottom:3px}
+.inc-cell input{width:100%;border:1px solid var(--border);border-radius:8px;padding:6px 4px;
+  text-align:center;font-family:'Playfair Display',serif;font-size:1rem;font-weight:600;
+  background:var(--creme);color:var(--text)}
+.inc-cell input:focus{outline:none;border-color:var(--vert)}
+
+/* REDONDANCES */
+.redondances-wrap{margin:16px 0}
+.redondances-wrap p{font-size:.8rem;color:var(--gris);margin-bottom:8px}
+.redondances-badges{display:flex;flex-wrap:wrap;gap:8px}
+.badge-nb{display:flex;align-items:center;gap:6px;padding:6px 14px;border-radius:20px;
+  background:var(--gris-cl);font-size:.85rem;color:var(--text);border:1px solid var(--border)}
+.badge-nb.redondant{background:#edf2f0;border-color:var(--vert);color:var(--vert);font-weight:600}
+.badge-nb.master{border-color:var(--or);background:#fff8ed;color:#8a6530}
+.badge-nb .count{font-size:.68rem;background:var(--vert);color:var(--blanc);border-radius:10px;
+  padding:1px 6px;margin-left:4px}
+
+/* SÉLECTION TOGGLES */
+.toggles-wrap{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+.toggle-btn{display:flex;align-items:center;gap:8px;padding:8px 16px;border-radius:10px;
+  border:1.5px solid var(--border);background:var(--blanc);cursor:pointer;transition:all .2s;
+  font-family:'Poppins',sans-serif;font-size:.85rem}
+.toggle-btn .n{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:600;
+  width:28px;height:28px;border-radius:50%;background:var(--gris-cl);
+  display:flex;align-items:center;justify-content:center;transition:all .2s}
+.toggle-btn.on{border-color:var(--vert);background:#edf2f0}
+.toggle-btn.on .n{background:var(--vert);color:var(--blanc)}
+.toggle-btn.master{border-color:var(--or-cl)}
+.toggle-btn.master.on .n{background:var(--or)}
+.hint-box{background:var(--gris-cl);border:1px solid var(--border);border-radius:8px;
+  padding:10px 14px;font-size:.8rem;color:#5a5a5a;margin:12px 0;line-height:1.6}
+
+/* BTNS */
+.btn{display:inline-flex;align-items:center;gap:7px;padding:11px 24px;border:none;
+  border-radius:50px;font-family:'Poppins',sans-serif;font-size:.78rem;letter-spacing:.07em;
+  text-transform:uppercase;cursor:pointer;transition:all .2s;font-weight:500}
+.btn-primary{background:var(--noir);color:var(--blanc)}
+.btn-primary:hover{background:#333}
+.btn-or{background:var(--vert);color:var(--blanc)}
+.btn-or:hover{background:var(--vert-cl)}
+.btn-secondary{background:transparent;color:var(--text);border:1.5px solid var(--border)}
+.btn-secondary:hover{background:var(--gris-cl);border-color:var(--gris)}
+.btn-sm{padding:7px 16px;font-size:.72rem}
+
+/* ANALYSE OUTPUT */
+.analyse-wrap{display:none}
+.analyse-content{font-size:.89rem;line-height:1.82;color:#222}
+.analyse-content h1{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:300;
+  color:var(--vert);margin:28px 0 12px;padding-bottom:10px;border-bottom:1px solid var(--border)}
+.analyse-content h2{font-family:'Playfair Display',serif;font-size:1.25rem;font-weight:400;
+  color:var(--vert-cl);margin:22px 0 10px}
+.analyse-content h3{font-size:.72rem;text-transform:uppercase;letter-spacing:.12em;
+  color:var(--or);margin:18px 0 8px;font-weight:600}
+.analyse-content h4{font-size:.85rem;font-weight:600;color:var(--vert);margin:14px 0 6px}
+.analyse-content p{margin-bottom:11px}
+.analyse-content ul{padding-left:18px;margin-bottom:11px}
+.analyse-content li{margin-bottom:5px}
+.analyse-content strong{color:var(--vert);font-weight:600}
+.analyse-content em{color:#555}
+.analyse-content blockquote{border-left:3px solid var(--vert);padding:10px 16px;
+  margin:14px 0;background:var(--creme);border-radius:0 8px 8px 0;font-style:italic;color:#444}
+.analyse-content hr{border:none;border-top:1px solid var(--border);margin:22px 0}
+.analyse-content .tip-box{background:var(--gris-cl);border-left:3px solid var(--vert);
+  padding:10px 14px;border-radius:0 6px 6px 0;margin:8px 0;font-size:.85rem}
+.analyse-content .question-box{border-left:3px solid var(--or);padding:8px 14px;
+  background:#fff8ed;border-radius:0 6px 6px 0;margin:6px 0;font-style:italic;font-size:.85rem;color:#555}
+
+/* PROMPT BOX */
+.prompt-wrap{margin-top:20px;display:none}
+.prompt-header{display:flex;align-items:center;justify-content:space-between;
+  margin-bottom:12px;flex-wrap:wrap;gap:10px}
+.prompt-header h3{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--vert);font-weight:400}
+.prompt-header p{font-size:.78rem;color:var(--gris);margin-top:2px}
+textarea.prompt-ta{width:100%;min-height:420px;border:1px solid var(--border);border-radius:8px;
+  padding:14px;font-family:'Poppins',sans-serif;font-size:.78rem;line-height:1.6;
+  color:#333;background:var(--gris-cl);resize:vertical}
+
+/* NOTES */
+textarea.notes{width:100%;min-height:100px;border:1px solid var(--border);border-radius:8px;
+  padding:12px;font-family:'Poppins',sans-serif;font-size:.86rem;background:var(--blanc);
+  resize:vertical;color:var(--text)}
+textarea.notes:focus{outline:none;border-color:var(--vert)}
+
+/* CONTEXTE ANALYSE PRO */
+.context-grid{display:grid;grid-template-columns:1fr 160px;gap:12px;margin-top:16px}
+.context-grid .full{grid-column:1/-1}
+.context-field label{display:block;font-size:.68rem;text-transform:uppercase;letter-spacing:.08em;color:var(--gris);margin-bottom:5px}
+.context-field input,.context-field textarea{width:100%;border:1px solid var(--border);border-radius:8px;padding:10px 12px;
+  font-family:'Poppins',sans-serif;font-size:.84rem;background:var(--blanc);color:var(--text);resize:vertical}
+.context-field input:focus,.context-field textarea:focus{outline:none;border-color:var(--vert)}
+.context-field textarea{min-height:92px;line-height:1.55}
+.context-field textarea.big{min-height:135px}
+.manual-note{font-size:.76rem;line-height:1.55;color:var(--gris);margin-top:6px}
+@media(max-width:650px){.context-grid{grid-template-columns:1fr}.context-grid .full{grid-column:auto}}
+
+
+/* PRINT */
+@media print{
+  header .flow .card .upload-zone .pdf-viewer-wrap .saisie-grid .inc-grid
+  .toggles-wrap .hint-box .prompt-wrap .no-print{display:none!important}
+  .analyse-wrap{display:block!important}
+  body{background:white}
+  main{max-width:100%;padding:0}
+}
+</style>
+</head>
+<body>
+<header>
+  <p class="header-brand">L'Essence de Soi</p>
+  <svg class="header-logo" width="72" height="72" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+    <!-- Outer circle -->
+    <circle cx="100" cy="100" r="88" fill="none" stroke="#426a62" stroke-width="1.4"/>
+    <!-- Seed of Life — 7 circles -->
+    <circle cx="100" cy="100" r="44" fill="none" stroke="#426a62" stroke-width="1"/>
+    <circle cx="100" cy="56"  r="44" fill="none" stroke="#426a62" stroke-width="1"/>
+    <circle cx="138" cy="78"  r="44" fill="none" stroke="#426a62" stroke-width="1"/>
+    <circle cx="138" cy="122" r="44" fill="none" stroke="#426a62" stroke-width="1"/>
+    <circle cx="100" cy="144" r="44" fill="none" stroke="#426a62" stroke-width="1"/>
+    <circle cx="62"  cy="122" r="44" fill="none" stroke="#426a62" stroke-width="1"/>
+    <circle cx="62"  cy="78"  r="44" fill="none" stroke="#426a62" stroke-width="1"/>
+    <!-- Chakra dots (vertical axis, top → bottom) -->
+    <circle cx="100" cy="14"  r="9" fill="#6B3FA0"/>
+    <circle cx="100" cy="42"  r="9" fill="#3B4BA8"/>
+    <circle cx="100" cy="70"  r="9" fill="#4A90D9"/>
+    <circle cx="100" cy="100" r="9" fill="#426a62"/>
+    <circle cx="100" cy="130" r="9" fill="#F5C842"/>
+    <circle cx="100" cy="158" r="9" fill="#F59B23"/>
+    <circle cx="100" cy="186" r="9" fill="#C0392B"/>
+  </svg>
+  <h1>Préparation de Séance</h1>
+</header>
+<main>
+
+<div class="intro-box">
+  <h2>Bienvenue dans ton espace de préparation de séance</h2>
+  <p>Cet outil a été conçu pour t'accompagner dans la préparation de tes consultations de numérologie selon la méthode Essence de Soi — pas pour les remplacer.</p>
+  <p>Concrètement, il t'aide à :</p>
+  <ul>
+    <li><strong>Structurer</strong> les données du thème (chemin de vie, expression, inclusion, redondances…) de façon claire et lisible</li>
+    <li><strong>Repérer rapidement</strong> les nombres dominants, absents ou en lien, pour préparer tes axes de lecture</li>
+    <li><strong>Gagner du temps</strong> sur la mise en forme, pour te concentrer sur l'essentiel : l'écoute et l'accompagnement de ton client</li>
+  </ul>
+  <div class="intro-note">Ce que cet outil ne fait pas : il n'interprète pas à ta place, ne remplace pas ton ressenti, ton expérience ni la relation que tu construis en séance. Considère-le comme un carnet de préparation intelligent — la lecture finale, la nuance, la justesse du mot juste, ça reste toi.</div>
+</div>
+
+<div class="flow">
+  <div class="flow-step active" id="st1">📄 Fiche client</div>
+  <div class="flow-arrow">›</div>
+  <div class="flow-step" id="st2">🔢 Saisie</div>
+  <div class="flow-arrow">›</div>
+  <div class="flow-step" id="st3">🎯 Sélection</div>
+  <div class="flow-arrow">›</div>
+  <div class="flow-step" id="st4">✨ Analyse</div>
+</div>
+
+<!-- ÉTAPE 1 : UPLOAD PDF -->
+<div id="bloc-upload">
+  <div class="upload-zone" id="upload-zone"
+    onclick="document.getElementById('file-pdf').click()"
+    ondragover="event.preventDefault();this.classList.add('drag')"
+    ondragleave="this.classList.remove('drag')"
+    ondrop="dropPdf(event)">
+    <div class="icon">📄</div>
+    <h2>Dépose la fiche numéro du client</h2>
+    <p>PDF · Diagramme Essence de Soi — il s'affichera pour que tu puisses lire les nombres</p>
+    <input type="file" id="file-pdf" accept=".pdf" onchange="loadPdf(this.files[0])">
+  </div>
+  <p style="text-align:center;font-size:.8rem;color:var(--gris)">— ou —</p>
+  <div style="text-align:center;margin-top:12px">
+    <button class="btn btn-secondary" onclick="passerSansPdf()">Saisir les nombres directement sans PDF</button>
+  </div>
+</div>
+
+<!-- APERÇU PDF -->
+<div class="pdf-viewer-wrap" id="pdf-viewer-wrap">
+  <h3>
+    <span id="pdf-nom">Fiche client</span>
+    <div style="display:flex;gap:8px">
+      <button class="btn btn-or btn-sm no-print" id="btn-lire" onclick="lireNombresPdf()" style="display:none">🔍 Lire les nombres</button>
+      <button class="btn btn-secondary btn-sm no-print" onclick="resetPdf()">✕ Changer</button>
+    </div>
+  </h3>
+  <canvas id="pdf-canvas"></canvas>
+  <p class="pdf-hint" id="pdf-hint">Le diagramme s'affiche ci-dessus — clique sur <strong>🔍 Lire les nombres</strong> pour préremplir automatiquement</p>
+</div>
+
+<!-- ÉTAPE 2 : SAISIE -->
+<div id="bloc-saisie" style="display:none">
+  <div class="card">
+    <h2>🔢 Saisie des nombres</h2>
+    <div class="saisie-grid">
+      <div class="saisie-item">
+        <label>Chemin de vie</label>
+        <input type="text" id="s-cdv" placeholder="ex: 33/6" oninput="majRedondances()">
+      </div>
+      <div class="saisie-item">
+        <label>Expression</label>
+        <input type="text" id="s-exp" placeholder="ex: 5" oninput="majRedondances()">
+      </div>
+      <div class="saisie-item">
+        <label>Voyelles</label>
+        <input type="text" id="s-voy" placeholder="ex: 3" oninput="majRedondances()">
+      </div>
+      <div class="saisie-item">
+        <label>Consonnes</label>
+        <input type="text" id="s-con" placeholder="ex: 11/2" oninput="majRedondances()">
+      </div>
+      <div class="saisie-item">
+        <label>Jour naissance</label>
+        <input type="text" id="s-jour" placeholder="ex: 7" oninput="majRedondances()">
+      </div>
+      <div class="saisie-item">
+        <label>Mois naissance</label>
+        <input type="text" id="s-mois" placeholder="ex: 7" oninput="majRedondances()">
+      </div>
+      <div class="saisie-item">
+        <label>Année de naissance</label>
+        <input type="text" id="s-annee" placeholder="ex: 1" oninput="majRedondances()">
+      </div>
+      <div class="saisie-item">
+        <label>Prénom</label>
+        <input type="text" id="s-prenom" placeholder="ex: 7" oninput="majRedondances()">
+      </div>
+      <div class="saisie-item">
+        <label>Nom</label>
+        <input type="text" id="s-nom" placeholder="ex: 3" oninput="majRedondances()">
+      </div>
+      <div class="saisie-item">
+        <label>Jour + Mois</label>
+        <input type="text" id="s-moment" placeholder="ex: 5" oninput="majRedondances()">
+      </div>
+    </div>
+
+    <h3 style="margin-top:4px">Inclusion <span style="font-size:.75rem;color:var(--gris);font-family:'Poppins',sans-serif;font-weight:400">(nuance uniquement — ne sert pas à la sélection)</span></h3>
+    <div class="inc-grid">
+      <div class="inc-cell"><span class="n">1</span><input type="number" id="i1" min="0" placeholder="0"></div>
+      <div class="inc-cell"><span class="n">2</span><input type="number" id="i2" min="0" placeholder="0"></div>
+      <div class="inc-cell"><span class="n">3</span><input type="number" id="i3" min="0" placeholder="0"></div>
+      <div class="inc-cell"><span class="n">4</span><input type="number" id="i4" min="0" placeholder="0"></div>
+      <div class="inc-cell"><span class="n">5</span><input type="number" id="i5" min="0" placeholder="0"></div>
+      <div class="inc-cell"><span class="n">6</span><input type="number" id="i6" min="0" placeholder="0"></div>
+      <div class="inc-cell"><span class="n">7</span><input type="number" id="i7" min="0" placeholder="0"></div>
+      <div class="inc-cell"><span class="n">8</span><input type="number" id="i8" min="0" placeholder="0"></div>
+      <div class="inc-cell"><span class="n">9</span><input type="number" id="i9" min="0" placeholder="0"></div>
+    </div>
+
+    <!-- REDONDANCES AUTO -->
+    <div class="redondances-wrap" id="redondances-wrap" style="display:none">
+      <p>Nombres détectés · les redondants sont surlignés :</p>
+      <div class="redondances-badges" id="redondances-badges"></div>
+    </div>
+
+    <div style="margin-top:20px">
+      <button class="btn btn-primary" onclick="allerSelection()">Voir la sélection proposée →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ÉTAPE 3 : SÉLECTION -->
+<div id="bloc-selection" style="display:none">
+  <div class="card">
+    <h2>🎯 Sélection pour la séance</h2>
+    <div class="hint-box" id="hint-selection"></div>
+    <p style="font-size:.78rem;color:var(--gris);margin-bottom:10px">Active / désactive les nombres à travailler (2 à 4 idéalement)</p>
+    <div class="toggles-wrap" id="toggles"></div>
+    <div class="hint-box">
+      💡 L'inclusion vient <strong>nuancer l'analyse</strong> une fois les nombres choisis — elle n'intervient pas dans la sélection.
+    </div>
+
+    <h3 style="margin-top:20px">Contexte pour le compte rendu professionnel</h3>
+    <div class="context-grid">
+      <div class="context-field">
+        <label>Prénom de la personne <span style="text-transform:none;letter-spacing:0">(facultatif)</span></label>
+        <input type="text" id="client-prenom" placeholder="Ex : Cindy">
+      </div>
+      <div class="context-field">
+        <label>Pages visées</label>
+        <input type="number" id="pages-cible" min="3" max="20" value="7">
+      </div>
+      <div class="context-field full">
+        <label>Demande / problématique actuelle</label>
+        <textarea id="client-demande" placeholder="Ex : Je souhaite me reconvertir, mais je ne sais pas vers quoi aller ni quelles conditions de travail me conviendraient vraiment."></textarea>
+      </div>
+      <div class="context-field full">
+        <label>Liens, nuances ou informations à ajouter manuellement</label>
+        <textarea class="big" id="liens-manuels" placeholder="Ex : Prendre en compte le lien 3/5 : besoin d'expérimenter et de transmettre ce qui a été vécu.
+Ex : Le 1 ne s'exprime pas ici comme une facilité à agir seule : besoin d'être rassurée avant de se lancer.
+Ex : Insister sur son besoin d'aider et de conseiller."></textarea>
+        <div class="manual-note">Ces éléments seront ajoutés au prompt comme <strong>informations prioritaires</strong>. Tu peux y écrire un lien personnalisé, une nuance observée en séance, une information connue sur la personne ou une consigne spécifique.</div>
+      </div>
+    </div>
+
+    <textarea class="notes" id="notes-obs" placeholder="Notes d'observation libres : dynamique yin/yang, premières impressions, ambiance générale du thème…" style="margin-top:14px"></textarea>
+    <div style="margin-top:16px;display:flex;gap:12px;flex-wrap:wrap">
+      <button class="btn btn-or" onclick="genererAnalyse()">✨ Générer l'analyse</button>
+      <button class="btn btn-secondary btn-sm" onclick="retourSaisie()">← Modifier la saisie</button>
+    </div>
+  </div>
+</div>
+
+<!-- ÉTAPE 4 : ANALYSE -->
+<div class="analyse-wrap" id="bloc-analyse">
+  <div class="card">
+    <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:20px">
+      <h2 style="margin-bottom:0;padding-bottom:0;border-bottom:none" id="analyse-titre">Analyse de préparation</h2>
+      <div style="display:flex;gap:8px;flex-wrap:wrap" class="no-print">
+        <button class="btn btn-secondary btn-sm" onclick="retourSelection()">← Modifier</button>
+        <button class="btn btn-primary btn-sm" onclick="window.print()">🖨️ Imprimer</button>
+      </div>
+    </div>
+    <div class="analyse-content" id="analyse-content"></div>
+  </div>
+
+  <!-- PROMPT DE CONTEXTE -->
+  <div class="card prompt-wrap no-print" id="prompt-wrap">
+    <h2>💬 Prompt complet — compte rendu professionnel</h2>
+    <div class="prompt-header">
+      <div>
+        <h3>À copier dans ton IA pour générer l’analyse professionnelle complète</h3>
+        <p>Le prompt intègre le thème, les liens automatiques, tes ajouts manuels et les règles de rédaction issues des retours tests.</p>
+      </div>
+      <button class="btn btn-or btn-sm" onclick="copierPrompt()"><span id="copy-lbl">📋 Copier</span></button>
+    </div>
+    <textarea class="prompt-ta" id="prompt-ta" readonly></textarea>
+  </div>
+</div>
+
+</main>
+
+<script>
+// ══════════════════════════════════
+// DATA — FICHES NOMBRES
+// ══════════════════════════════════
+const FICHES = {
+'1':{titre:'1 — Action & Leadership',mots:'Indépendance · Courage · Initiative · Autonomie',
+  besoins:['Agir, prendre des initiatives','Indépendance et autonomie','Démarrer, être à l\'origine de quelque chose','Innover, prendre son pouvoir','S\'affirmer, diriger, décider','Être reconnu, s\'exprimer librement'],
+  talents:['Donner l\'impulsion, initier, entreprendre','Avancer, créer, inspirer, oser','Décider, innover, guider, motiver'],
+  nourris:['Confiance, audace, dynamisme','Leadership, décisions rapides','Détermination, courage, enthousiasme'],
+  non_nourris:['Manque de confiance, blocage, inaction','Doute, passivité, peur d\'agir','Frustration'],
+  exces:['Égocentrisme, autorité excessive','Impulsivité, contrôle, nervosité'],
+  peurs:['Échec, erreur, stagnation','Perte de contrôle, être freiné, être dans l\'ombre'],
+  tips:['Passer à l\'action même imparfaitement — l\'élan se crée en avançant','Identifier une direction claire avant d\'agir pour éviter la dispersion','Se rappeler que déléguer n\'est pas une faiblesse'],
+  questions:['Quand tu prends une initiative, qu\'est-ce qui te donne confiance en toi ?','Dans quels domaines tu as le sentiment de vraiment diriger ta vie ?','Qu\'est-ce qui te freine parfois à te lancer ?']},
+
+'2':{titre:'2 — Sensibilité & Connexion',mots:'Sensibilité · Collaboration · Empathie · Douceur · Écoute · Doute',
+  besoins:['Support, soutien, encouragement','Écoute et connexion','Être utile, accompagner','Réconfort et collaboration','Être compris, être écouté','Accueillir ses émotions et ressentis','Trouver son juste milieu, rythme et régularité'],
+  talents:['Créer des synergies, coopérer, médiation','Accueillir émotions et paroles','Discrétion, capter l\'environnement','Confident, donner des conseils'],
+  nourris:['Coopération naturelle, écoute active','Intuition, aisance émotionnelle','Équilibre, connexion, partage, harmonie'],
+  non_nourris:['Doute, dépendance, passivité','Stress, soumission, influence extérieure'],
+  exces:['Sacrifice, perte de soi, fusion à tout prix','Épuisement, dit oui à tout'],
+  peurs:['Abandon, vulnérabilité','Émotions trop intenses, de déranger','D\'être inutile, de ne pas être compris'],
+  tips:['Passer à l\'action pour contrer le doute — agir, même imparfaitement','Localiser ses émotions dans le corps plutôt que de les intellectualiser','Créer des moments de calme et de vide pour se recentrer'],
+  questions:['Comment tu fais la différence entre ce que tu ressens et ce que tu absorbes de l\'autre ?','Quand le doute est là, qu\'est-ce qu\'il essaie de te dire ?','De quoi as-tu besoin pour te sentir vraiment soutenu·e ?']},
+
+'3':{titre:'3 — Expression & Créativité',mots:'Création · Expression · Sociabilité · Charme · Reconnaissance · Optimisme',
+  besoins:['Créer, s\'exprimer, parler','Reconnaissance, légèreté','Sociabiliser, spontanéité, stimulation','Être vu, briller, rassembler','Voir les choses positivement'],
+  talents:['Détendre, animer, créer, communiquer','Imagination, joie de vivre, faire rire','Voir le verre à moitié plein'],
+  nourris:['Parle, rit, optimiste, joyeux','Crée du lien, ose se montrer','Créatif, maîtrise les mots'],
+  non_nourris:['Négatif, critique, timide','En manque de reconnaissance, amer'],
+  exces:['Immaturité, éparpillement, narcissisme','Bavardage excessif, manipulation'],
+  peurs:['Invisibilité, absence de reconnaissance','Peur de déplaire, du silence, d\'être oublié'],
+  tips:['Identifier son canal d\'expression privilégié et en faire un rituel','Expérimenter sans chercher la perfection ni le jugement extérieur','Éviter de masquer ses émotions négatives par excès de positivité'],
+  questions:['Comment tu t\'exprimes le plus naturellement — la parole, l\'écrit, le corps, l\'art ?','Qu\'est-ce qui se passe en toi quand tu te sens reconnu·e pour ce que tu fais ?','Quand tu ne t\'exprimes pas, où ça va dans ton corps ?']},
+
+'4':{titre:'4 — Structure & Sécurité',mots:'Structure · Organisation · Ordre · Méthode · Famille · Travail · Discipline',
+  besoins:['Sécurité, stabilité, cadre et limites','Clarté, concret, respect','Avoir un plan et des preuves','Ordonner, structurer','Se sentir à sa place, routine'],
+  talents:['Fiable, rigoureux, précis, professionnel','Organisé, structuré, logique, persévérant','Stable, loyal, méthodique, rassurant'],
+  nourris:['Fiable, engagé, persévérant, stable','Constant, sérieux, va au bout des choses'],
+  non_nourris:['Peur excessive, hyper-contrôle','Rigidité mentale, ne trouve pas sa place'],
+  exces:['Rigide, impatient, maniaque','Attend la sécurité absolue, contrôle excessif'],
+  peurs:['Se tromper, échouer, inconnu','Instabilité, désordre, chaos, insécurité'],
+  tips:['Se remémorer ses réussites passées pour ancrer la confiance','Revenir au corps : massage, sport, jardinage, poterie','Tester de petits changements progressifs pour apprivoiser l\'imprévu'],
+  questions:['Qu\'est-ce qui te donne un sentiment de sécurité dans ta vie en ce moment ?','Quand quelque chose sort de ton cadre, comment tu gères ça à l\'intérieur ?','Dans quel domaine tu aimerais plus de stabilité ?']},
+
+'5':{titre:'5 — Liberté & Mouvement',mots:'Mouvement · Changement · Adaptation · Aventure · Liberté · Passion · Énergie',
+  besoins:['Variété, changements réguliers','Liberté (avec stabilité préalable)','Stimulation, expérimentation','Se sentir vivant, curiosité','Vivre des aventures, être stimulé, fluidité'],
+  talents:['Vision originale, créativité, adaptabilité','Curiosité, énergie communicative, flexibilité','Enthousiasme, vivacité, goût du challenge'],
+  nourris:['Sort de la zone de confort, apprend','S\'adapte, rebondit, expérimente','Polyvalent, inspire les autres'],
+  non_nourris:['Ennui, étouffement, routine','Inertie, bore-out, impression de subir'],
+  exces:['Instabilité, impulsivité, impatience','Éparpillement, inconstance, incapacité à aller au bout'],
+  peurs:['S\'ennuyer, être prisonnier, stagnation','Perte de liberté, de passion'],
+  tips:['Créer un cadre choisi et souple plutôt que de fuir tous les cadres','Alterner phases de dynamisme et de repos pour éviter la saturation','Se demander : est-ce que je bouge par envie ou par fuite ?'],
+  questions:['Qu\'est-ce que la liberté signifie concrètement pour toi dans ta vie de tous les jours ?','Comment tu fais pour rester ancré·e quand tout change autour de toi ?','Qu\'est-ce qui te donne envie de t\'engager durablement dans quelque chose ?']},
+
+'6':{titre:'6 — Harmonie & Service',mots:'Harmonie · Beauté · Responsabilité · Bien-être · Amour · Service · Paix',
+  besoins:['Trouver des solutions, aider, prendre en charge','Améliorer, embellir, harmoniser','Paix, confort, prendre soin','Aimer et être aimé, affection, protection','Se sentir utile, servir, réconforter'],
+  talents:['Fiabilité, empathie, sens du beau','Sens de l\'harmonie, réconforter, créer la paix','Générosité, bienveillance, diplomatie'],
+  nourris:['Générosité sincère, bienveillance, empathie','Prend soin sans s\'oublier, cherche la paix'],
+  non_nourris:['Perfectionnisme, jalousie, manque d\'estime','Passivité, frustration'],
+  exces:['Sacrifice, surprotection, perfectionnisme excessif','Peur de dire non, dépendance affective, oubli de soi'],
+  peurs:['Ne pas être à la hauteur, être inutile','Conflit, souffrance, décevoir, ne pas être aimé'],
+  tips:['Appliquer la règle : une action pour les autres = une action pour moi','Identifier à qui je dis non quand je dis oui aux autres','Lâcher la culpabilité — elle est un poison pour le 6'],
+  questions:['Comment tu fais la différence entre aider par choix et aider par obligation ?','Qu\'est-ce qui se passe en toi quand tu prends soin de toi en priorité ?','Dans quels domaines tu aurais besoin que quelqu\'un prenne soin de toi ?']},
+
+'7':{titre:'7 — Analyse & Profondeur',mots:'Analyse · Réflexion · Introspection · Expertise · Connaissance · Spiritualité',
+  besoins:['Apprendre, comprendre le pourquoi','Analyser en profondeur, observer avant d\'agir','Trouver sa vérité intérieure','Espace, solitude et calme pour penser','Se connaître en profondeur, sens'],
+  talents:['Discret, observateur, esprit analytique','Va au fond des choses, intelligence','Favorise les prises de conscience','Capable de synthèse, perçoit au-delà des apparences'],
+  nourris:['Sait où il va, pose des questions puissantes','Voit au-delà des apparences, lucide, visionnaire'],
+  non_nourris:['Tourne en boucle, doute de tout, reste en surface'],
+  exces:['Reste dans le mental, ne passe pas à l\'action','Coupé du monde, perfectionniste, anxieux'],
+  peurs:['Ne pas savoir, manquer de contrôle','Être rejeté, être fou ou anormal'],
+  tips:['Ramener l\'énergie dans le corps : marche, yoga, jardinage, massages','Journaling pour canaliser le mental et transformer l\'information en connaissance','Transformer le savoir en action : tester, expérimenter, transmettre'],
+  questions:['Comment tu fais quand ton mental tourne en boucle — qu\'est-ce qui t\'aide à sortir ?','Qu\'est-ce que tu comprends de toi en ce moment que tu n\'avais pas compris avant ?','Comment tu gères le besoin d\'être seul·e tout en restant connecté·e aux autres ?']},
+
+'8':{titre:'8 — Puissance & Ambition',mots:'Puissance · Équilibre · Matérialisation · Énergie · Abondance · Autorité · Ambition',
+  besoins:['Matérialiser, impacter, investir','Équilibre et justice, se dépasser','Créer de la valeur, laisser une trace','Construire, nourrir son ambition','Atteindre un équilibre tête/corps'],
+  talents:['Fiable, rigoureux, logique, persévérant','Résilience, va au bout des choses'],
+  nourris:['Transforme ses pensées en actions concrètes','Équilibre ses forces, fiable, ambitieux'],
+  non_nourris:['Doute, sentiment d\'inutilité, auto-sabotage','Impuissance, voit la vie en noir'],
+  exces:['Burn-out, rigidité, rapport déséquilibré à l\'argent','Excès de contrôle, émotions refoulées'],
+  peurs:['Échec, manque de ressources','Perte de contrôle, impuissance, mauvaise décision'],
+  tips:['Faire circuler l\'énergie : sport, arts martiaux, soins énergétiques','Explorer son système de valeurs — dissocier sa valeur personnelle de la performance','Toujours avoir un projet ou un but pour donner un sens à son énergie'],
+  questions:['Quand tu te sens puissant·e et efficace, qu\'est-ce qui se passe autour de toi ?','Comment tu te remets en mouvement après une période de stagnation ?','Qu\'est-ce que tu veux vraiment construire ou laisser comme trace ?']},
+
+'9':{titre:'9 — Collectif & Transmission',mots:'Ouverture · Collectif · Humain · Aboutissement · Sagesse · Fin de cycle',
+  besoins:['Contribuer à une cause plus grande','Partager et transmettre son expérience','Appartenir à un groupe, recul et hauteur','Se ressourcer, rêver grand, s\'ouvrir'],
+  talents:['Calme, écoute, intelligence, réflexion','Altruisme, ouverture d\'esprit, vision globale','Sagesse, capacité à transmettre et rassembler'],
+  nourris:['Généreux, inspirant, sage','Centré sur l\'essentiel, guide avec bienveillance'],
+  non_nourris:['Isolement, rumination, intolérance','Anxiété, nostalgie, confusion émotionnelle'],
+  exces:['Sacrifice, épuisement, sentiment de supériorité','Attentes irréalistes, fuite dans le rêve'],
+  peurs:['Déconnexion, exclusion, solitude','Submersion émotionnelle, perte de sens'],
+  tips:['Écrire une lettre symbolique à une période ou personne pour clôturer un cycle','Observer ses émotions sans s\'y identifier : "je ne suis pas mes émotions"','S\'impliquer dans une cause collective pour nourrir le besoin de contribution'],
+  questions:['Qu\'est-ce que tu as vraiment envie de transmettre ou de partager dans ta vie ?','Comment tu fais pour te ressourcer quand tu te sens épuisé·e par les autres ?','Qu\'est-ce qui te donne le sentiment de contribuer à quelque chose de plus grand que toi ?']},
+
+'11':{titre:'11 — Intuition & Guidance (Maître)',mots:'Intuition · Inspiration · Puissance · Rayonnement · Hypersensibilité · Guidance',
+  note:'Nombre maître — analyser les deux dimensions : 11 (énergie du maître) ET 2 (canal d\'expression au quotidien)',
+  besoins:['Connexion ++ et se sentir utile via ses perceptions','Faire confiance à ses ressentis','Équilibre action/réceptivité','Cultiver son indépendance sans s\'isoler','Utiliser sa sensibilité comme une force'],
+  talents:['Haute intuition, grande sensibilité','Vision claire et inspirante, charisme naturel','Profondeur émotionnelle, guider un groupe'],
+  nourris:['Aligné, rayonnant, confiant','Équilibre entre intuition et action','Transforme sa sensibilité en puissance'],
+  non_nourris:['Doute, repli, surcharge émotionnelle','Sentiment d\'être incompris'],
+  exces:['Mégalomanie spirituelle, besoin de reconnaissance excessive','Épuisement, volonté de sauver tout le monde'],
+  peurs:['Rejet, incompréhension, surcharge sensorielle','Ne pas être à la hauteur de sa mission'],
+  tips:['Faire confiance à ses ressentis sans les rationaliser systématiquement','Alterner action et retraite pour préserver l\'énergie','Transformer la sensibilité en outil de lecture plutôt qu\'en charge'],
+  questions:['Comment tu fais la différence entre ton intuition et ta peur ?','Quand tu te sens inspiré·e, d\'où ça vient selon toi ?','Comment tu vis ton hypersensibilité au quotidien ?']},
+
+'22':{titre:'22 — Construction à grande échelle (Maître)',mots:'Construction · Envergure · Long terme · Endurance · Puissance · Visionnaire',
+  note:'Nombre maître — analyser les deux dimensions : 22 (énergie du maître) ET 4 (canal d\'expression et fondations concrètes)',
+  besoins:['Œuvrer pour le collectif à grande échelle','Dépasser ses peurs, définir des objectifs clairs','Bâtir du concret, équilibre matière/spirituel'],
+  talents:['Grande intuition alliée à organisation solide','Endurance et persévérance, vision structurée','Capacité à fédérer et bâtir durablement'],
+  nourris:['Bâtit des projets durables et utiles','Relie spiritualité et matière avec aisance'],
+  non_nourris:['Doute, dispersion, épuisement','Perfectionnisme, peur d\'échouer'],
+  exces:['Contrôle excessif, rigidité, pression intérieure'],
+  peurs:['D\'échouer, de ne pas être à la hauteur','De ne pas aller au bout'],
+  tips:['Décomposer les grands projets en étapes concrètes et célébrer chaque palier','Accepter que la grandeur se construit lentement — la durée est une force','Travailler sur la peur de l\'échec : elle est souvent proportionnelle à l\'ambition'],
+  questions:['Qu\'est-ce que tu veux vraiment bâtir à long terme ?','Comment tu gères la tension entre l\'ampleur de tes projets et le quotidien ?','Qu\'est-ce qui se passe quand tu te permets de rêver vraiment grand ?']},
+
+'33':{titre:'33 — Amour & Transmission universelle (Maître)',mots:'Sensibilité · Bienveillance · Amour · Partage · Inspiration · Guérison · Transmission',
+  note:'Nombre maître — analyser les deux dimensions : 33 (énergie du maître) ET 6 (canal d\'expression, harmonie et service au quotidien)',
+  besoins:['Soulager et apporter des solutions par les mots','Cultiver l\'amour universel à grande échelle','Ouvrir les consciences, créer et transmettre','Enseigner, inspirer et élever les autres'],
+  talents:['Puissance du verbe et du cœur','Empathie profonde, créativité intuitive','Capacité à apaiser, harmoniser, communiquer avec bienveillance'],
+  nourris:['Utilise sa sensibilité pour aider concrètement','Trouve les bons mots pour apaiser','Donne sans s\'épuiser, aligné, en paix'],
+  non_nourris:['Parle sans être entendu ou se tait','Impression de donner sans retour','Porte les émotions des autres'],
+  exces:['Devient sauveur ou contrôlant','Sature émotionnellement, fait passer les besoins des autres avant les siens'],
+  peurs:['Rejet, incompréhension, culpabilité','Ne pas réussir à aider, être jugé'],
+  tips:['Apprendre à recevoir autant qu\'à donner — l\'équilibre protège le 33','Identifier quand aider vient du cœur et quand ça vient de la peur de décevoir','Utiliser les mots avec intention : la parole est le premier outil du 33'],
+  questions:['Qu\'est-ce que donner signifie vraiment pour toi — et qu\'est-ce que tu reçois en retour ?','Comment tu te sens quand tu n\'arrives pas à aider quelqu\'un qui en a besoin ?','Qu\'est-ce que tu aimerais transmettre ou enseigner dans ta vie ?']}
+};
+
+// ══════════════════════════════════
+// DATA — LIENS
+// ══════════════════════════════════
+const LIENS = {
+'1-1':'Besoin d\'avancer seul, esprit pionnier, grande confiance dans ses capacités, cherche à aller droit au but. Forte volonté, énergie d\'action continue, vision claire, aime décider et initier. Peu de patience pour la lenteur ou l\'indécision, préfère agir que réfléchir trop longtemps. Capacité à rebondir vite et à créer de nouveaux départs. Peut avoir tendance à tout contrôler, besoin d\'apprendre à déléguer et à écouter sans se sentir freiné.',
+'1-2':'Mélange d\'action et de sensibilité. Personne à la fois volontaire et réceptive, capable d\'agir avec tact. Besoin d\'avancer tout en maintenant une atmosphère calme et équilibrée. Très intuitive, ressent rapidement les ambiances et les besoins des autres. Aime motiver, soutenir et guider sans brusquer. Prend facilement les devants mais reste à l\'écoute. Recherche de relations harmonieuses où chacun trouve sa place. Peut avoir du mal à dire non ou à s\'affirmer clairement quand l\'émotion prend le dessus.',
+'1-3':'Énergie vive, créative et communicative. Esprit d\'initiative fort, plein d\'idées, toujours en quête de nouveauté. Aime lancer des projets, s\'exprimer librement, partager son enthousiasme et mettre de la couleur dans ce qu\'elle fait. Besoin de visibilité et de reconnaissance pour sa manière unique d\'agir et de créer. Capacité à inspirer par sa présence et son expression naturelle. Allie audace et légèreté : agit avec confiance, tout en gardant une touche d\'humour et de spontanéité. Peut parfois s\'éparpiller ou chercher à plaire, mais retrouve vite son cap dès qu\'elle suit ce qui l\'anime vraiment.',
+'1-4':'Personne organisée et déterminée, qui avance avec méthode. Besoin de concrétiser ses idées par des actions structurées. L\'énergie du 1 pousse à initier, celle du 4 à construire : ensemble, elles apportent une forme de discipline. Vision claire, esprit pratique, goût de la progression par étapes. Trouve la sécurité dans la planification et l\'efficacité. Capacité à bâtir sur des bases solides sans perdre l\'élan initial. Persévérante, fiable et rigoureuse, besoin d\'avoir des résultats rapidement. Aime travailler avec des repères clairs et se sentir en contrôle de ses projets. Peut parfois se montrer trop exigeante ou rigide si les choses n\'avancent pas assez vite.',
+'1-5':'Personne dynamique, indépendante et curieuse, toujours en quête de nouveauté et de diversité. Le 1 pousse à l\'action, le 5 à l\'exploration : ensemble, ils créent une énergie de mouvement et de changement constant. Besoin de liberté dans les décisions et d\'autonomie dans la manière de faire les choses. Avance vite, aime relever des défis et sortir de la routine. Ouverte d\'esprit, adaptable et audacieuse, elle suit son instinct et agit dès qu\'une opportunité se présente. Capacité à rebondir rapidement, à improviser, à trouver des solutions sur le moment. Communication vive, souvent directe. Peut s\'impatienter quand les choses stagnent, mais retrouve son équilibre dès qu\'elle canalise son énergie vers un objectif clair et stimulant.',
+'1-6':'Besoin de créer, d\'améliorer et de prendre des responsabilités importantes. Le 1 agit, le 6 harmonise. Personne fiable, capable d\'assumer ses choix et de servir de repère pour les autres. Sens du devoir fort, cherche à trouver des solutions par ses actions. Besoin de se recentrer régulièrement pour ne pas s\'éparpiller. Capacité à rassembler, à fédérer autour de projets. Aime que ses efforts soient reconnus et valorisés, et permettent à l\'autre d\'avancer ou de résoudre quelque chose. Peut avoir tendance à vouloir tout porter, donc important de se connecter à son cœur et ce qui est vraiment important pour elle.',
+'1-7':'Besoin de se démarquer par la connaissance et la compréhension de soi. Le 1 agit, le 7 analyse : ensemble, ils créent une personne autonome, curieuse et lucide. Recherche de clarté avant de passer à l\'action. Besoin de direction précise, d\'objectifs clairement définis. Capacité à avancer seule, à suivre sa propre voie sans se laisser influencer. L\'esprit d\'initiative du 1 se combine à la profondeur du 7 pour faire émerger une réflexion stratégique. Personne à la fois active et introspective, qui agit quand elle se sent alignée. Peut se montrer impatiente face à la lenteur ou au doute. Importance de toujours progresser, mentalement en particulier.',
+'1-8':'Forte détermination, sens de l\'engagement et besoin de concrétiser ses ambitions. Le 1 impulse, le 8 consolide : ensemble, ils créent une personnalité qui veut réussir et laisser une empreinte durable. Besoin de résultats tangibles, de progression constante et de reconnaissance pour ses accomplissements. Besoin de s\'affirmer ++, bonnes capacités à gérer, diriger et influencer positivement. Vision claire, approche stratégique, goût du challenge. Peut avoir tendance à en faire trop ou à vouloir tout maîtriser d\'un coup. Leadership naturel, beaucoup d\'énergie pour aller au bout de ses convictions.',
+'1-9':'Besoin de se dépasser et de donner du sens à ses actions. Le 1 initie, le 9 élève : ensemble, ils forment une énergie tournée vers la contribution et la réalisation de projets à plus grande échelle. Vision large, envie de faire une différence concrète dans le monde. Personne idéaliste et déterminée, capable de rêver grand tout en agissant avec efficacité. Aime aller au bout de ce qu\'elle entreprend, même si le chemin est long. Peut parfois se sentir seule dans sa quête ou frustrée si les résultats tardent. Besoin de solitude régulièrement, de se poser pour prendre du recul et activer sa créativité.',
+'2-2':'Grande sensibilité, fonctionnement cyclique et besoin de stabilité émotionnelle. Personne à l\'écoute, attentive aux détails, qui cherche la douceur et la sécurité dans ses relations. Capacité à refléter les émotions de l\'autre, à apaiser et à harmoniser. Besoin d\'être entourée, soutenue et comprise. Ressent profondément les ambiances et se laisse parfois influencer par l\'énergie extérieure. A besoin de relations solides et équitables, de moments de tendresse, de silence et de repos pour se recentrer. Trouve son équilibre quand elle prend soin de ses émotions avant celles des autres. Sa force vient de sa capacité à apaiser, à comprendre sans juger et à ramener de la douceur là où il y a de la tension.',
+'2-3':'Besoin de partager des moments forts avec les autres, d\'exprimer à l\'extérieur ce qu\'elle ressent à l\'intérieur. Personne sociable, sensible, qui aime les échanges simples et authentiques. Coopérative, joyeuse, avec un bon sens de l\'humour et une imagination développée. Apporte une ambiance détendue, sait mettre les gens à l\'aise, et capte rapidement les émotions des autres. A besoin de légèreté et de plaisir dans ses échanges pour se sentir connectée. Son bien-être passe par la simplicité, le rire et la spontanéité du quotidien. Sa force est d\'amener de la douceur là où les autres se ferment, et de créer du lien entre les personnes.',
+'2-4':'Recherche de stabilité et besoin de sécurité avant toute chose. Personne loyale, organisée, qui aime prendre son temps pour faire les choses correctement. Construit son monde intérieur sur des bases solides : valeurs, repères, relations fiables. Attentive aux détails, elle aime que tout soit clair, structuré et cohérent. A besoin de calme, d\'un rythme régulier et de relations stables pour se sentir sereine. Trouve son équilibre dans les routines simples, le travail bien fait et la loyauté dans ses relations. Se sent à sa place quand elle peut s\'appuyer sur quelque chose de concret — un foyer, une relation durable, un projet qui tient debout.',
+'2-5':'Attirance pour le mouvement et besoin de faire circuler les émotions et l\'énergie. Personne sensible, intuitive, qui ressent fort et s\'adapte facilement à son environnement. Le 2 perçoit/ressent, le 5 transforme : ensemble, ils permettent de développer la souplesse et la curiosité. Recherche d\'expériences nouvelles pour mieux comprendre ce qui se passe à l\'intérieur. Aime bouger, découvrir, échanger, mais a tout autant besoin de moments tranquilles pour se retrouver. Se sent bien quand elle peut suivre son propre rythme sans contrainte, en ayant la liberté de ralentir ou d\'accélérer selon son état intérieur.',
+'2-6':'Capacité naturelle à trouver des compromis et à apaiser les tensions. Personne douce, sensible, tournée vers les autres, avec un grand sens du relationnel. Le 2 apporte l\'écoute et la réceptivité, le 6 la bienveillance et le besoin d\'harmonie : ensemble, ils créent une personnalité chaleureuse, protectrice et attentionnée. Attachée à son foyer et à ses proches, elle veille à ce que chacun se sente bien. A besoin d\'un environnement paisible, de contacts humains sincères et de repères affectifs solides. Son équilibre repose sur sa capacité à donner sans s\'oublier, à préserver sa douceur tout en apprenant à dire non.',
+'2-7':'Énergie d\'introspection et de finesse dans la perception. Personne sensible, observatrice, patiente, qui ressent profondément avant d\'exprimer. Le 2 apporte l\'émotion et l\'écoute, le 7 la réflexion et la profondeur : ensemble, ils créent une personnalité calme, intuitive et analytique, capable d\'aller au-delà des apparences. Recherche de vérité, besoin de comprendre ce qu\'elle vit et d\'y trouver du sens. A besoin de solitude pour trier ses émotions, de moments de silence et de recul pour retrouver sa clarté intérieure. Se stabilise quand elle trouve un équilibre entre le cœur et la tête.',
+'2-8':'Recherche constante d\'équilibre, aussi bien intérieur que dans les relations et les projets. Personne solide, persévérante, sur qui l\'on peut compter. Capable de combler les vides et de réparer ce qui manque, elle agit avec intégrité et prudence. L\'émotion déclenche souvent l\'action : un ressenti fort devient un moteur pour décider, s\'engager ou rectifier une situation. Fait preuve de résilience, garde la tête froide dans les moments de tension et gère les conflits avec calme et lucidité. Avance avec constance, préfère les actes concrets aux grands discours et accorde beaucoup d\'importance à la loyauté. Doit apprendre à trouver le bon moteur, qui part de ses tripes plutôt que de se fier à sa peur.',
+'2-9':'Grande sensibilité à l\'humain et à ce qui relie les êtres entre eux. Personne à l\'écoute, empathique, profondément touchée par ce qu\'elle perçoit autour d\'elle. Le 2 ressent avec intensité, le 9 ouvre sur le collectif : ensemble, ils créent une personnalité altruiste, tolérante et bienveillante. Attentive aux émotions des autres, souvent à fleur de peau, elle capte les ambiances et les non-dits. Aime se sentir utile, contribuer à quelque chose de plus grand. A besoin d\'espace, de silence et de moments seule pour se recentrer et recharger son énergie. Son équilibre se trouve dans la juste distance : assez proche pour comprendre les autres, mais suffisamment détachée pour ne pas absorber leurs émotions.',
+'3-3':'Besoin d\'exprimer les choses de façon fluide et naturelle, avec une sympathie immédiate et un enthousiasme communicatif. Personne vive, expressive, toujours en mouvement, qui aime créer, tester et passer d\'une idée à l\'autre. Imagination très développée, curiosité, sensibilité forte aux mots et à leurs nuances. Garde une attitude légère et optimiste en toutes circonstances. Personnalité très connectée à son côté enfant : spontanéité, ne se prend pas la tête. Dégage quelque chose de solaire, sa bonne humeur inspire naturellement les autres. Pour rester équilibrée, elle gagne à poser quelques repères stables et à aller au bout de ce qu\'elle commence.',
+'3-4':'Besoin de concrétiser ses idées et de leur donner une forme tangible. Personne appliquée, structurée et créative, qui aime voir le résultat de ce qu\'elle imagine. Le 3 apporte la spontanéité et l\'expression, le 4 la méthode et la fiabilité : ensemble, ils donnent une personnalité équilibrée, organisée et efficace. Parle avec intention, agit avec précision. Méticuleuse, attentive aux détails, besoin d\'avoir des repères et une bonne gestion de son temps. Trouve son équilibre dans la régularité, mais s\'épanouit quand il y a aussi de la souplesse. Trop de cadre ou de routine peut vite l\'étouffer.',
+'3-5':'Grand besoin de diversité et d\'expérimentation. Personne vive, curieuse et toujours en mouvement, qui aime apprendre, tester, transmettre. Le 3 apporte la créativité et l\'expression, le 5 la liberté et la curiosité : ensemble, ils forment une personnalité enthousiaste, communicante et en perpétuelle évolution. Sa parole est imagée, vivante, souvent ponctuée de métaphores qui donnent vie à ses idées. L\'expérimentation et la transmission sont ses moteurs essentiels : elle apprend en vivant et fait grandir les autres en partageant ce qu\'elle vit. Excellente communication par différents canaux.',
+'3-6':'Sens esthétique développé et goût du beau dans le quotidien. Personne créative, expressive et bienveillante, qui aime rendre la vie plus douce et plus harmonieuse. Le 3 apporte la légèreté, le 6 la chaleur humaine : ensemble, ils donnent une personnalité sensible, artistique et tournée vers le bien-être. Attentive aux détails, à la décoration, à la nourriture et à l\'apparence, elle aime prendre soin de son corps et de son entourage. Se ressource dans la nature ou en partageant des moments simples avec les proches. Capacités à utiliser des mots justes et touchants pour améliorer ou faire du bien.',
+'3-7':'Curieux, observateur et cultivé, il aime comprendre comment les choses fonctionnent. Le 3 exprime, le 7 analyse : ensemble, ils donnent une personne qui apprend sans cesse, relie les idées et cherche à donner du sens à ce qu\'elle découvre. Besoin d\'aller au fond des sujets, de creuser, de poser des questions. Aime décoder, simplifier et transmettre de façon claire. Trouve facilement les bons mots pour rendre accessibles des notions complexes. Profil souvent attiré par l\'écriture, la recherche ou l\'enseignement. Besoin de discussions stimulantes et d\'un espace pour réfléchir et se remettre en question.',
+'3-8':'Beaucoup d\'énergie, de répartie et d\'assurance. Personne directe, charismatique, efficace et déterminée, qui aime argumenter, convaincre et aller droit au but. Le 3 communique, le 8 agit : ensemble, ils donnent une personnalité entreprenante, dynamique et impactante par les mots notamment. Aime saisir les opportunités, relever des défis. Se sent bien quand il peut exprimer ses idées et débattre. Besoin que ses efforts produisent des résultats concrets et besoin de projets ambitieux. Doit veiller à canaliser son énergie pour ne pas s\'épuiser ou se disperser.',
+'3-9':'Grande ouverture d\'esprit, capable d\'influencer les autres par sa vision du monde. Personne positive, imaginative et connectée aux autres, qui aime raconter ses expériences et partager ce qu\'elle en comprend. Personnalité inspirante, tournée vers la transmission et la découverte. Attirée par les groupes, les voyages et les projets collectifs, elle a besoin de rassembler autour d\'elle. Besoin d\'accomplissement, d\'utilité et de reconnaissance pour ce qu\'elle apporte. Apprend en vivant, en bougeant, en rencontrant.',
+'4-4':'Grande stabilité et besoin de sécurité avant toute chose. Personne solide, fiable et rigoureuse, qui aime le travail bien fait et la constance. Véritable pilier pour son entourage, disciplinée, ordonnée et très ancrée. Besoin d\'un cadre clair et de connaître ses limites pour se sentir en confiance. Respectueuse des règles, elle se sent rassurée quand tout est à sa place et que les repères sont stables. Se sent bien dans un environnement ordonné, où chacun tient son rôle. Bonnes capacités d\'organisation, pour créer des process et encadrer des personnes ou des structures. Trouve son équilibre quand elle garde du temps pour souffler et accepte un peu de nouveauté sans craindre de perdre le contrôle.',
+'4-5':'Utilise ses bases pour progresser et évoluer. Alterne entre le mouvement et la stabilité. Fait preuve de détermination et de persévérance lorsqu\'une passion l\'anime. Prend des risques calculés et gère bien les situations d\'urgence. Ose sortir de sa zone de confort à son rythme, sans précipitation. Besoin de changements réguliers pour éviter la routine trop enfermante. Elle aime la sécurité, mais a besoin de bouger pour se sentir vivante. Se sent bien quand elle peut allier structure et liberté : planifier, puis improviser. Son équilibre repose sur l\'alternance entre ancrage et mouvement.',
+'4-6':'Donne le meilleur de soi pour bien faire. Besoin d\'être aimé pour ses compétences et de se sentir utile. Rigoureux et conscient de ses faits et gestes, il recherche le confort et la stabilité. Accorde une grande importance à la famille, fait preuve de modestie et de simplicité. Se sent bien quand tout est organisé, propre et sous contrôle, quand chacun remplit son rôle. A besoin d\'un environnement calme, rassurant et harmonieux. S\'épanouit quand elle apprend à valoriser ses efforts sans attendre la reconnaissance extérieure, et à faire les choses pour le plaisir, pas seulement par devoir.',
+'4-7':'Contrôle, maîtrise et grandes compétences spécifiques. Besoin de trouver sa sécurité à travers la connaissance et le développement d\'un savoir-faire précis. Prévoit, anticipe, et a un sens aigu du détail. Analyse les risques, ne laisse rien au hasard et agit avec méthode. Classe, planifie, structure et cherche toujours à prévenir plutôt qu\'à subir. A besoin de comprendre avant d\'agir et de maîtriser son domaine pour se sentir en sécurité. Son équilibre vient quand elle apprend à faire confiance à la vie autant qu\'à sa préparation, en acceptant qu\'il n\'existe pas de certitude absolue.',
+'4-8':'Grand besoin de concret et de preuves. Met en place des stratégies pour avancer, construire et réussir. Mesure les résultats et agit en fonction, cherchant toujours un équilibre entre construction et stabilité. La vision à long terme la rassure et lui permet de gagner en paix intérieure. Besoin de gérer ses ressources avec attention. Personnalité pragmatique et persévérante, qui s\'appuie sur des faits avant de trancher. Se sent bien quand elle voit le fruit de ses efforts. Besoin de stabilité matérielle pour se sentir en confiance, mais aussi de défis pour ne pas s\'endormir dans le confort. Attention au fonctionnement en tout noir ou tout blanc — la nuance est la clé.',
+'4-9':'Recherche de sécurité émotionnelle et besoin d\'avoir plusieurs points d\'ancrage. Notion de territoire importante. Fait régulièrement du tri et optimise son espace pour se sentir alignée. Attache une grande importance aux relations authentiques et transparentes. Fait preuve de tolérance et cherche à se sentir à sa juste place dans le monde. Aime trouver un équilibre entre travail et famille. Peut avoir tendance à idéaliser les choses. Cherche à comprendre le monde dans sa globalité. Peut se sentir en décalage, surtout si sentiment d\'insécurité.',
+'5-5':'Capte tout ce qui l\'entoure et réagit vite à ce qui se passe autour d\'elle. Personne vive, stimulée par le changement et la nouveauté. Curieuse, adaptable et polyvalente, elle saute d\'un projet à l\'autre, s\'enthousiasme vite, mais se lasse aussi rapidement. Fonctionne souvent à l\'instinct, avance sous pression et donne le meilleur dans l\'urgence. S\'épanouit quand elle peut bouger, découvrir, improviser et faire plusieurs choses à la fois. Besoin d\'air, de liberté et de stimulation permanente. Se sent bien quand elle peut apprendre en testant et vivre intensément. Important d\'avoir une passion à nourrir et de rechercher la sensation d\'être vivante.',
+'5-6':'Hyper adaptable à son entourage. Attiré par le bien-être et tout ce qui fait circuler l\'énergie dans la maison, les idées ou les relations. Besoin de diversité, d\'harmonie et d\'échanges équilibrés. Empathique, trouve facilement des compromis, agit en médiateur. Personnalité douce, flexible et à l\'écoute. Se sent bien dans les lieux vivants et lumineux, entourée de gens positifs. Besoin de lien humain, de mouvement et de beauté dans le quotidien. Aime les connexions plutôt passionnées et soulager les autres.',
+'5-7':'Grand sens de l\'apprentissage et de la transmission. Besoin constant de progresser et de s\'enrichir intérieurement. Curieux de nature, s\'intéresse à des sujets atypiques ou hors du commun. A besoin de se forger sa propre opinion, quitte à remettre souvent ses certitudes en question. Voit les choses sous un angle singulier et cherche à nourrir son esprit de ce qui le passionne. Besoin de sens en général, toujours en train de chercher, comprendre et partager. S\'épanouit dans la découverte, les échanges stimulants et la transmission de ses connaissances. A besoin d\'être libre de penser et d\'expérimenter.',
+'5-8':'Grand besoin de faire circuler et de dépenser son énergie. Se renouvelle régulièrement pour vivre de véritables transformations intérieures. Dispose d\'une grande vitalité et recherche les challenges pour entretenir son dynamisme. Attiré par les nouvelles expériences et les situations qui le poussent à se dépasser. Énergie forte qui s\'exprime souvent à travers le sport. Personnalité intense, passionnée et toujours en quête de dépassement. Se sent bien lorsqu\'elle peut libérer son trop-plein d\'énergie. Trouve son équilibre quand elle canalise son énergie plutôt que de la subir, en alternant action et récupération.',
+'5-9':'Besoin d\'exploration et de découvertes. Esprit ouvert, curieux, avide de voyages et d\'expériences nouvelles. Aime mettre les personnes en relation et faire circuler l\'énergie. Goût prononcé pour la transmission et le partage. Va toujours plus haut et plus loin, animée par le dépassement de soi et une vision globale des choses. Capacité à diffuser ses connaissances à grande échelle, avec une approche plutôt holistique. Apprend en explorant et ramène toujours quelque chose à transmettre. Trouve son équilibre quand elle canalise son énergie entre exploration et ancrage : relier, diffuser, transmettre… sans se disperser.',
+'6-6':'Grand sens de l\'esthétisme et de l\'harmonie, personnalité colorée et lumineuse. Besoin que ses actions soient reconnues et valorisées. Toujours en recherche de solutions et de compromis. Se met volontiers au service de sa communauté, avec un vrai souci de qualité. Animée par une bienveillance profonde et un grand sens du réconfort, elle devient souvent un point de repère pour les autres. Grand besoin d\'utilité et de se sentir à sa place dans un rôle concret. Elle prend soin d\'elle et des autres avec la même exigence, en cherchant toujours à améliorer ce qui l\'entoure. Trouve son équilibre quand elle prend soin de son propre bien-être autant que de celui des autres, sans culpabiliser de se choisir.',
+'6-7':'Réflexion et analyse au service de l\'autre. Excellent dans l\'analyse des problématiques, avec une grande finesse et une précision remarquable dans ses perceptions pour apporter des améliorations concrètes. Fort attrait pour le développement personnel. Esprit d\'innovation, goût pour la recherche et le développement d\'un sujet qui la passionne. Capacité à créer du lien entre des éléments éloignés. Personnalité perspicace et posée, qui observe avant d\'agir. Elle aime comprendre le fonctionnement des autres pour mieux les aider à évoluer. A besoin de calme, de se retrouver dans sa bulle et de prendre son temps. S\'épanouit dans les échanges profonds et la recherche, en particulier en lien avec la psychologie.',
+'6-8':'Recherche constante de complémentarité dans chaque situation : additionne plutôt que soustrait. Cherche à créer de la valeur, à améliorer, à optimiser tout ce qu\'elle touche. Attentive à l\'honnêteté et à la cohérence entre ce qu\'elle ressent et ce qu\'elle fait. Capacité naturelle à garder son calme et à gérer le stress. Prend souvent le rôle du sauveur, celle qui répare, soutient et remet les choses à leur place. Personnalité posée et investie, qui cherche à construire dans la durée. Très attentive à ce qu\'elle donne et reçoit — elle trouve son équilibre quand elle apprend à ne pas tout porter seule, à déléguer et à accepter que l\'harmonie ne dépend pas que d\'elle.',
+'6-9':'Énergie artistique et sensible, guidée par le besoin d\'embellir le monde et de créer du lien. Vision holistique, ouverte et tolérante, profondément tournée vers l\'humain. À l\'aise avec les émotions, les intuitions et les sensations subtiles. Cherche à comprendre et à rassembler. Souvent tournée vers l\'accompagnement, la création ou les métiers du soin. Personnalité inspirante et bienveillante, qui apporte douceur et soutien à son entourage. Se sent à sa place lorsqu\'elle met sa sensibilité au service du collectif sans se laisser absorber par les émotions des autres.',
+'7-7':'Esprit toujours en éveil, en quête de compréhension et de progression. Réflexions rapides, profondes et continues, avec une conscience affûtée de ce qui se joue autour d\'elle. Besoin fort d\'apprendre, de décoder, d\'analyser toutes les options avant de se décider. Sait ce qu\'elle veut, affirme sa différence et revendique son côté singulier. Cherche sa vérité à travers ses propres expériences, en observant et en testant la réalité. Détermination, autonomie et curiosité intellectuelle guident ses choix. Se sent bien quand elle a la liberté de réfléchir et d\'approfondir les sujets qui la passionnent. Besoin de solitude et de temps pour penser. Attention à ne pas se perdre dans les pensées sans jamais concrétiser.',
+'7-8':'Grand besoin d\'équilibre entre toutes les polarités : la tête et le corps, le matériel et le spirituel, le mental et l\'émotionnel, l\'action et le repos, l\'intuition et la logique. Capable de créer des stratégies solides et des plans d\'action précis. Avance avec constance et efficacité, surtout dans les domaines qu\'elle maîtrise. Esprit réfléchi et structuré, elle sait où elle va et comment y arriver. Ses opinions sont affirmées, parfois tranchées, mais toujours guidées par la cohérence. Elle aime comprendre, planifier et donner une direction claire à ses actions. Se sent bien quand elle voit les choses avancer et que ses efforts portent leurs fruits.',
+'7-9':'Introspectif, curieux et connecté à l\'invisible. Aime décrypter les symboles, les rêves et les messages cachés de la vie. Monde intérieur riche, souvent en décalage avec la réalité. Esprit libre, anti-conformiste, en quête de sens et attiré par tout ce qui est mystérieux ou inhabituel. Grande sensibilité, intuition fine et besoin de solitude pour préserver sa bulle intérieure. Personnalité à la fois spirituelle et lucide, qui explore sans cesse — les idées, les émotions, les concepts. Se sent bien dans les environnements paisibles et inspirants. En recherche de mentor ou capable d\'accompagner en partageant son vécu.',
+'8-8':'Énergie intense, puissante, parfois extrême. A besoin de se confronter à des situations fortes pour trouver son propre équilibre. Se dépasse en relevant de grands défis ou en s\'investissant dans des projets d\'envergure. Ne fait rien à moitié : quand elle s\'engage, c\'est avec tout son temps, son énergie et sa conviction. Recherche des résultats concrets, un vrai retour sur ses efforts. Esprit de justice très développé. Combative, endurante, résiliente, elle rebondit toujours, peu importe la difficulté. A besoin d\'action, de mouvement et d\'objectifs clairs. Se sent bien quand son énergie sert une cause ou une construction durable. Ne supporte pas la stagnation.',
+'8-9':'Forte volonté d\'impacter le monde et de laisser une trace durable. Ambition tournée vers le collectif : elle agit pour quelque chose de plus grand qu\'elle. Souvent attirée par l\'humanitaire ou tout domaine où elle peut influencer et transformer. Besoin d\'apporter du sens à ses réussites matérielles, de mettre sa puissance au service de valeurs humaines. Figure de mentor ou de référence dans son secteur, capable d\'inspirer et de guider les autres. Personnalité visionnaire et engagée, qui ne fait rien à moitié. A besoin d\'objectifs ambitieux, de contribution et de reconnaissance. Se sent bien quand son travail a un vrai impact.',
+'9-9':'Grande maturité, comme si elle avait déjà vécu plusieurs vies en une. Personne sage, avec les pieds sur Terre. Besoin de connaître l\'humain sous un maximum de coutures. Connexion forte avec les personnes plus âgées ou les parcours de vie riches. Cultive un détachement profond — du matériel, du regard des autres, des attentes extérieures. Besoin de recul régulier pour observer, analyser et donner du sens à ce qu\'elle vit. Recherche une vision globale, la plus ouverte possible. Aime écouter, partager ses conclusions, transmettre avec humilité. Trouve son équilibre quand elle accepte de ne pas tout comprendre. Attention aux illusions et fantasmes. A besoin d\'atteindre des sommets.'
+};
+
+// ══════════════════════════════════
+// DATA — ZÉRO DANS L'INCLUSION
+// ══════════════════════════════════
+const ZERO_INCLUSION = {
+'1':{
+  rapport:'Rapport au père : inspiration ou perception d\'un modèle hors norme. Absence ou sentiment de manque dans le rôle paternel. L\'enjeu est de créer un équilibre entre l\'idéalisation du père et l\'indépendance vis-à-vis de ses attentes.',
+  constructif:'Prend facilement des initiatives, inspire confiance, dynamise les autres, fait preuve de résilience, exprime son individualité de manière authentique, avance sur son propre chemin.',
+  manque:'Hésitation constante dans la prise de décision, dépendance excessive au soutien des autres, difficulté à exprimer ses besoins, tendance à rester passive en attendant le bon moment.',
+  exces:'Sous-estimation des actions, égoïsme ou arrogance, manque d\'ouverture aux nouvelles idées, négligence des opinions d\'autrui, isolement, excès de confiance pouvant mettre en danger.'
+},
+'2':{
+  rapport:'Rapport à la mère : fusion possible et difficultés à s\'en détacher. Alternance entre liens forts et détachement. Absence ou sentiment de manque dans le rôle maternel. L\'enjeu : équilibre entre omniprésence maternelle et indépendance totale.',
+  constructif:'Sensibilité et intuition fluide, capacité à travailler en binôme, écoute active, soutien émotionnel authentique, aptitude à vivre les deux faces d\'une même situation avec aisance.',
+  manque:'Doutes permanents, attitude passive, émotions retenues (effet cocotte-minute), collaborations difficiles notamment avec les femmes, besoin de réassurance constant, sentiment de vide.',
+  exces:'Conseils non sollicités, sensibilité excessive aux influences extérieures, relations superficielles, vagues émotionnelles intenses, passage brutal du tout au rien sans juste milieu.'
+},
+'3':{
+  rapport:'Rapport au regard des autres : besoin de reconnaissance pour son expression. L\'enjeu est de s\'exprimer librement sans chercher l\'approbation systématique.',
+  constructif:'Expression claire et fluide, création de liens facilités, charme naturel, besoin de reconnaissance qui pousse à donner le meilleur, talent pour les mots justes, optimisme vivant.',
+  manque:'Négativité ou retrait par rapport aux autres, isolement, manque d\'enthousiasme, difficultés à nouer de nouvelles relations, pensées gardées pour soi, satisfaction personnelle difficile.',
+  exces:'Recherche constante de visibilité par peur d\'être invisible, éparpillement dans les idées, optimisme excessif qui minimise certaines réalités, parle trop sans écouter, langage pouvant blesser ou manipuler.'
+},
+'4':{
+  rapport:'Rapport à la structure et à la sécurité : besoin de fondations solides pour oser avancer. L\'enjeu est de trouver un cadre sans se laisser enfermer dedans.',
+  constructif:'Organisation efficace, environnement de travail ordonné, filet de sécurité solide (économies, relations fiables), limites claires et saines, éthique de travail solide, décisions basées sur des faits concrets.',
+  manque:'Désordre dans la gestion du quotidien, insécurité constante, absence de limites claires, procrastination, difficulté à maintenir une routine, absence de planification à long terme.',
+  exces:'Conformisme rigide aux routines, résistance au changement, stagnation, trop de préoccupation pour les détails au détriment de l\'action, évitement des risques par peur de l\'échec, objectifs inatteignables.'
+},
+'5':{
+  rapport:'Rapport à la liberté et au mouvement : besoin de bouger, d\'explorer, de se renouveler. L\'enjeu est de suivre ses passions sans se disperser.',
+  constructif:'Vision originale, polyvalence et capacité à changer de cap, passion et épanouissement quotidien, aptitude à saisir les nouvelles opportunités, grande curiosité, recherche de progression constante.',
+  manque:'Fatigue chronique, ennui profond, perte de sens, rigidité par manque d\'adaptation, stagnation, répétition de schémas enfermants, sensation d\'étouffement, frustration par manque de stimulation.',
+  exces:'Agitation constante, difficulté à se poser, projets non menés à terme, perte d\'identité par sur-adaptation aux autres, instabilité, dispersion d\'énergie, fuite des situations difficiles, excès en tout genre.'
+},
+'6':{
+  rapport:'Rapport à la responsabilité et au soin : besoin de se sentir utile, d\'aimer et d\'être aimé. L\'enjeu est de prendre soin des autres sans s\'oublier.',
+  constructif:'Prise de responsabilités alignées au cœur, création d\'environnements harmonieux, bien-être comme priorité, cocon sécurisant, expression créative, amour inconditionnel, acceptation de soi et de l\'autre.',
+  manque:'Décharge des responsabilités, conflits relationnels, baisse d\'estime de soi, fatigue par manque de vigilance sur son état intérieur, centrage sur soi au détriment de l\'ouverture à l\'autre.',
+  exces:'Volonté de tout porter pour se sentir utile, négligence de ses propres besoins, jugements excessifs, perfectionnisme à outrance, recherche systématique de l\'approbation, difficulté avec son corps et sa féminité.'
+},
+'7':{
+  rapport:'Rapport à la connaissance et à la profondeur intérieure : besoin de comprendre avant d\'agir. L\'enjeu est d\'aller au fond sans rester paralysé par l\'analyse.',
+  constructif:'Analyse fine et multidimensionnelle, connexion à son intérieur, remise en question des croyances, originalité inspirante pour les autres, capacités de prises de conscience et de mises en lumière.',
+  manque:'Décisions précipitées sans réflexion, vide intérieur et manque de sens, superficialité relationnelle par peur d\'être mis de côté, erreurs répétées par manque de maîtrise, tendance aux sentiers battus.',
+  exces:'Inquiétude excessive, suranalyse paralysante, énergie bloquée dans la tête sans descendre dans le corps, déconnexion de la réalité, inaction par excès d\'informations, préoccupation constante de son propre fonctionnement.'
+},
+'8':{
+  rapport:'Rapport au pouvoir et aux ressources : besoin de s\'affirmer, de créer de la valeur, d\'avoir de l\'impact. L\'enjeu est de faire circuler son énergie de manière juste.',
+  constructif:'Investissement judicieux des ressources (temps, argent, énergie), capacité à peser le pour et le contre, réponse juste aux besoins matériels, respect de ses propres limites, équilibre logique/émotions, impact mesuré.',
+  manque:'Sentiment d\'impuissance, passivité excessive, auto-limitation, disharmonie dans les domaines de vie, ressources gardées pour soi, absence de challenge, difficultés face aux deuils.',
+  exces:'Comportement autoritaire et dominateur, rigidité, besoin de tout posséder, difficulté à se reposer, attentes de résultats trop fortes, violence possible envers soi ou les autres si l\'énergie ne circule pas.'
+},
+'9':{
+  rapport:'Rapport au collectif et à l\'universel : besoin de contribuer à quelque chose de plus grand. L\'enjeu est d\'être ouvert au monde sans se perdre dedans.',
+  constructif:'Grande ouverture d\'esprit, capacité de recul, engagement actif pour le monde, aptitude à rassembler autour d\'une cause, détachement émotionnel utile, nourrissement de ses rêves, humilité et apprentissage constant.',
+  manque:'Vision étroite, isolement face aux groupes, indifférence aux problématiques sociales, focalisation sur les détails sans vue d\'ensemble, répétition de schémas, manque d\'ambition, richesses gardées pour soi.',
+  exces:'Fantasme intense, déconnexion de soi (trop tourné vers les autres), manque d\'ancrage, fuite dans des paradis artificiels, difficulté à se connecter aux autres, focalisation sur l\'idéal plutôt que l\'expérience, conformisme aux systèmes.'
+}
+};
+
+// ══════════════════════════════════
+// DATA — NUANCES INCLUSION (angle quotidien, distinct des LIENS)
+// ══════════════════════════════════
+const INC_NUANCES = {
+'1-1':'Au quotidien, elle fonce : elle initie, décide et agit sans attendre la validation des autres. Esprit pionnier fort, elle rebondit vite après un échec et repart de zéro avec énergie. Point de vigilance : apprendre à déléguer et à écouter sans se sentir freinée.',
+'1-2':'Au quotidien, elle agit avec une grande sensibilité aux autres — elle perçoit les ambiances et adapte son élan à l\'état émotionnel de son entourage. Elle motive et soutient sans brusquer, tout en prenant facilement les devants. Attention à ne pas refouler ses propres besoins pour maintenir la paix.',
+'1-3':'Au quotidien, l\'action perd de sa saveur si elle ne peut pas être communiquée et partagée. Elle inspire par sa présence et son enthousiasme, allie audace et légèreté. Peut s\'éparpiller en voulant tout lancer à la fois.',
+'1-4':'Au quotidien, elle initie mais structure — elle planifie avant d\'agir et a besoin de repères clairs pour se sentir efficace. Elle avance avec méthode et persévère jusqu\'au résultat. Point de vigilance : peut devenir trop rigide si les choses n\'avancent pas selon son plan.',
+'1-5':'Au quotidien, elle démarre vite et passe à autre chose dès qu\'une nouvelle opportunité se présente. Adaptable et directe, elle agit à l\'instinct et improvise bien. Peut perdre le fil de ses priorités en multipliant les projets sans les terminer.',
+'1-6':'Au quotidien, elle prend des initiatives pour améliorer, réparer, aider — le sens du devoir et de la responsabilité guident son action. Elle est fiable et cherche à être utile à son entourage. Point de vigilance : tendance à tout prendre en charge au détriment de ses propres besoins.',
+'1-7':'Au quotidien, elle a besoin de comprendre avant d\'agir — elle analyse et cherche de la clarté avant de se lancer. Elle suit sa propre voie avec conviction, sans se laisser influencer. Peut se montrer impatiente face au doute ou à la lenteur.',
+'1-8':'Au quotidien, elle s\'engage à fond dans ce qu\'elle entreprend, portée par un besoin fort de résultats concrets et de reconnaissance. Elle dirige, impulse, structure et n\'abandonne pas facilement. Attention à ne pas vouloir tout maîtriser en même temps au risque de s\'épuiser.',
+'1-9':'Au quotidien, ses initiatives sont portées par une vision plus large — elle agit pour contribuer à quelque chose qui dépasse le simple résultat immédiat. Elle a besoin de donner du sens à ses actions. Peut se sentir seule dans sa quête si les autres ne partagent pas sa vision.',
+'2-2':'Au quotidien, elle fonctionne par cycles émotionnels et a besoin de beaucoup de douceur dans ses relations. Sa force est d\'apaiser et de comprendre sans juger. Point de vigilance : tendance à se laisser influencer par les émotions extérieures et à négliger ses propres besoins.',
+'2-3':'Au quotidien, elle exprime facilement ses ressentis et cherche des échanges légers et authentiques. Elle capte les émotions des autres et met naturellement les gens à l\'aise. Sa légèreté et son humour créent spontanément du lien.',
+'2-4':'Au quotidien, elle a besoin d\'un rythme stable et de relations fiables pour se sentir en sécurité. Elle avance avec calme et constance, prend soin des détails. Point de vigilance : peut avoir du mal à s\'adapter quand les choses bougent trop vite.',
+'2-5':'Au quotidien, ses émotions se nourrissent du mouvement et de la nouveauté — elle a besoin de diversité pour se sentir vivante. Elle ressent fort et s\'adapte vite à son environnement. Besoin de trouver l\'équilibre entre stimulation et ressourcement.',
+'2-6':'Au quotidien, elle prend naturellement soin de son entourage et cherche à maintenir l\'harmonie dans ses relations. Sa douceur et son sens du compromis en font un soutien précieux. Point de vigilance : apprendre à dire non et à ne pas s\'oublier.',
+'2-7':'Au quotidien, elle ressent profondément avant d\'exprimer et a besoin de temps seule pour trier ses émotions. Elle observe, écoute et cherche toujours à comprendre ce qui se passe vraiment. Se stabilise quand elle fait autant confiance à son intuition qu\'à son analyse.',
+'2-8':'Au quotidien, ses ressentis déclenchent souvent l\'action — un ressenti fort devient le moteur de ses décisions. Elle est fiable, résiliente et garde la tête froide dans les moments de tension. Doit apprendre à agir depuis ses convictions plutôt que depuis la peur.',
+'2-9':'Au quotidien, elle est profondément touchée par ce qu\'elle perçoit autour d\'elle et a besoin de se sentir utile et connectée à quelque chose de plus grand. Besoin de moments de retrait pour ne pas absorber les émotions des autres. Sa force : la juste distance entre empathie et détachement.',
+'3-3':'Au quotidien, elle a besoin d\'exprimer, de créer, de partager — l\'expression est son moteur principal. Légère, spontanée, solaire, elle met naturellement les autres en joie. Point de vigilance : poser quelques repères stables pour ne pas s\'éparpiller et aller au bout de ce qu\'elle commence.',
+'3-4':'Au quotidien, elle traduit ses idées en choses concrètes et tangibles — elle crée avec méthode. Méticuleuse, elle cherche à bien faire et aime que son travail soit reconnu. Besoin de garder de la place à la spontanéité pour ne pas étouffer sa créativité.',
+'3-5':'Au quotidien, elle parle, partage, expérimente et transmet — elle apprend en vivant. Sa communication est vivante et imagée. Excellente capacité à jongler entre plusieurs projets, mais risque de se disperser sans aller au bout.',
+'3-6':'Au quotidien, elle cherche à rendre son environnement plus beau, plus doux et plus agréable. Elle prend soin des détails, des mots, de l\'ambiance. Son besoin de connexion régulière avec ses proches est important pour son équilibre.',
+'3-7':'Au quotidien, elle apprend sans cesse et cherche à donner du sens à ce qu\'elle découvre. Elle aime aller au fond des sujets et transmettre de façon claire et accessible. Se nourrit des discussions stimulantes et des remises en question.',
+'3-8':'Au quotidien, elle s\'exprime avec assurance et conviction — sa parole a de l\'impact. Directe et charismatique, elle convainc et mobilise par ses mots. Besoin de canaliser son énergie pour ne pas s\'épuiser ou en faire trop.',
+'3-9':'Au quotidien, elle partage ce qu\'elle vit et apprend — la transmission est naturelle pour elle. Ses expériences nourrissent ceux qui l\'entourent. Risque de perdre de vue ses propres besoins quand elle se tourne trop vers le collectif.',
+'4-4':'Au quotidien, elle a besoin d\'un cadre très clair pour se sentir efficace. Elle est rigoureuse, fiable, organisée, et sert de pilier pour son entourage. Besoin de s\'accorder du temps pour souffler et accueillir un peu d\'imprévu sans perdre pied.',
+'4-5':'Au quotidien, elle alterne entre phases de structure et besoin de mouvement. Elle a besoin d\'explorer sans perdre ses repères. Se sent bien quand elle peut planifier ET avoir de la liberté dans les limites d\'un cadre qu\'elle a elle-même choisi.',
+'4-6':'Au quotidien, elle s\'investit beaucoup pour bien faire et se sentir utile. Très attachée à son foyer et à ses proches, elle cherche la stabilité et la reconnaissance. Besoin d\'apprendre à valoriser ses efforts pour elle-même, pas seulement pour les autres.',
+'4-7':'Au quotidien, elle planifie, anticipe et maîtrise son environnement. Elle a besoin de comprendre avant d\'agir et ne laisse rien au hasard. Besoin d\'accepter une part d\'incertitude pour ne pas bloquer l\'action par excès de préparation.',
+'4-8':'Au quotidien, elle bâtit avec méthode et vise des résultats concrets sur le long terme. Elle gère ses ressources avec attention et s\'appuie sur des faits avant de décider. Attention à ne pas fonctionner en tout noir ou tout blanc — la nuance est la clé.',
+'4-9':'Au quotidien, elle a besoin d\'ancrage solide — un lieu de vie, des repères personnels, des relations vraies. Elle cherche à comprendre le monde dans sa globalité tout en restant bien ancrée dans son quotidien. Peut se sentir en décalage si elle perd ses points de repère.',
+'5-5':'Au quotidien, elle a besoin de stimulation constante pour se sentir vivante. Elle saute d\'un projet à l\'autre, fonctionne à l\'instinct et donne le meilleur dans l\'urgence. Besoin absolu d\'une passion à nourrir pour canaliser cette énergie et éviter la dispersion.',
+'5-6':'Au quotidien, elle adapte son énergie aux besoins de son entourage et trouve naturellement les compromis. Elle aime que les choses avancent et circulent — dans ses relations comme dans ses projets. Besoin de beauté et de chaleur humaine dans son environnement.',
+'5-7':'Au quotidien, elle explore des sujets atypiques et se forge ses propres opinions. Elle a besoin de liberté intellectuelle et de remettre en question ce qu\'on lui présente. S\'épanouit dans la découverte et la transmission de ce qu\'elle apprend.',
+'5-8':'Au quotidien, elle a besoin de dépenser son énergie de façon intense — le défi physique ou mental est sa soupape. Elle se dépasse en permanence et n\'aime pas stagner. Besoin d\'alterner action et récupération pour ne pas se brûler.',
+'5-9':'Au quotidien, elle relie les personnes, diffuse des connaissances et met son énergie au service du collectif. Elle apprend en explorant et ramène toujours quelque chose à transmettre. Besoin de liberté dans ce qu\'elle fait tout en gardant un ancrage dans le réel.',
+'6-6':'Au quotidien, elle donne beaucoup d\'elle-même pour que son entourage se sente bien. Elle prend soin des détails et cherche à améliorer tout ce qui l\'entoure. Besoin essentiel d\'apprendre à se choisir autant qu\'elle choisit les autres, sans culpabiliser.',
+'6-7':'Au quotidien, elle analyse les situations pour mieux aider — son observation est fine et précise. Elle aime comprendre le fonctionnement des autres pour les accompagner. Se ressource dans le calme, les échanges profonds et les lectures qui nourrissent sa curiosité.',
+'6-8':'Au quotidien, elle crée de la valeur et cherche à optimiser tout ce qu\'elle touche. Elle joue souvent le rôle de celle qui répare et remet les choses en ordre. Besoin d\'apprendre à ne pas tout porter et à accepter que l\'harmonie ne dépend pas que d\'elle.',
+'6-9':'Au quotidien, elle met sa sensibilité au service des autres et du monde. Elle cherche à embellir, accompagner, rassembler. Besoin de veiller à ne pas se laisser absorber par les émotions du collectif au point de se perdre elle-même.',
+'7-7':'Au quotidien, elle est en permanence dans l\'analyse et la recherche de sens. Elle observe, décrypte, cherche à comprendre avant d\'adhérer à quoi que ce soit. Besoin de temps seule pour penser. Attention à ne pas rester dans la réflexion sans jamais passer à l\'action.',
+'7-8':'Au quotidien, elle cherche un équilibre entre réflexion et action concrète — elle pense, planifie, puis agit avec efficacité. Elle sait où elle va et comment y arriver. Se sent bien quand ses efforts portent leurs fruits et son quotidien reste ordonné et plein de sens.',
+'7-9':'Au quotidien, elle explore des sujets profonds et est attirée par l\'invisible, les symboles et ce qui a du sens. Elle a besoin d\'environnements inspirants et de personnes ouvertes d\'esprit. Sa profondeur peut la mettre en décalage avec son quotidien — attention à rester ancrée.',
+'8-8':'Au quotidien, elle s\'engage à fond et ne fait rien à moitié. Elle a besoin de défis importants pour trouver son équilibre et ne supporte pas la stagnation. Sa résilience est remarquable — elle rebondit quoi qu\'il arrive et avance sans se retourner.',
+'8-9':'Au quotidien, elle met son énergie et son ambition au service d\'une vision plus grande qu\'elle. Elle agit pour avoir un impact réel et durable, pas seulement pour elle. Besoin de sentir que son travail a un sens profond et contribue à quelque chose qui compte.',
+'9-9':'Au quotidien, elle prend du recul naturellement et cherche la vision d\'ensemble sur tout ce qu\'elle vit. Sage, humble et ouverte, elle transmet ce qu\'elle a appris avec bienveillance. Attention aux illusions — garder les pieds sur terre même quand on vise les sommets.'
+};
+const INC_NB_DESC = {
+'1':'Énergie d\'action, d\'initiative et de leadership. Avancer seul, esprit pionnier, grande confiance dans ses capacités. Forte volonté, vision claire, besoin de décider et d\'initier. Capacité à rebondir vite et à créer de nouveaux départs.',
+'2':'Grande sensibilité, fonctionnement cyclique, besoin de stabilité émotionnelle. Écoute fine, capacité à apaiser et à harmoniser. Besoin d\'être entourée et comprise. Force dans la douceur, la compréhension sans jugement et la bienveillance.',
+'3':'Besoin d\'expression fluide et naturelle, enthousiasme communicatif. Esprit vif, créatif, imagination développée. Aime créer, partager, mettre de la joie et de la légèreté dans ce qu\'elle fait. Curiosité et émerveillement permanents.',
+'4':'Grande stabilité, besoin de sécurité et de cadre clair. Personne solide, fiable, rigoureuse. Véritable pilier pour l\'entourage. Aime le travail bien fait, la constance et les choses concrètes. Bonnes capacités d\'organisation et d\'encadrement.',
+'5':'Énergie vive, stimulée par le changement et la nouveauté. Curieux, adaptable, polyvalent. Fonctionne à l\'instinct, donne le meilleur dans l\'urgence. Besoin d\'air, de liberté et de stimulation permanente. Explorer et vivre intensément.',
+'6':'Grand sens de l\'esthétisme et de l\'harmonie. Nature bienveillante, orientée vers les solutions et le bien-être. Devient souvent un point de repère pour les autres. Excellent conseiller, attentif à la qualité et au soin. Besoin que son rôle serve concrètement.',
+'7':'Esprit en éveil permanent, réflexions rapides et profondes. Besoin de comprendre, de décoder, d\'analyser. Affirme sa singularité et cherche sa vérité par ses propres expériences. Besoin de solitude et de liberté intellectuelle pour s\'épanouir.',
+'8':'Énergie intense, puissante, engagée. Se dépasse en relevant de grands défis. Ne fait rien à moitié. Recherche de résultats concrets, sens de la justice fort. Combatif, endurant, résilient. Besoin d\'action, d\'objectifs clairs, d\'impact durable.',
+'9':'Grande maturité, ouverture au monde et vision globale. Cultive un certain détachement du matériel. Besoin de recul pour observer et donner du sens. Transmet avec humilité. Cherche à comprendre l\'humain sous toutes ses facettes.'
+};
+
+// ══════════════════════════════════
+// STATE
+// ══════════════════════════════════
+let nombresSelec = [];
+
+// ══════════════════════════════════
+// PDF VIEWER (pdf.js CDN)
+// ══════════════════════════════════
+let pdfJsLoaded = false;
+
+function chargerPdfJs(cb) {
+  if (pdfJsLoaded) { cb(); return; }
+  const s = document.createElement('script');
+  s.src = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js';
+  s.onload = () => {
+    pdfjsLib.GlobalWorkerOptions.workerSrc =
+      'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+    pdfJsLoaded = true;
+    cb();
+  };
+  document.head.appendChild(s);
+}
+
+function dropPdf(e) {
+  e.preventDefault();
+  document.getElementById('upload-zone').classList.remove('drag');
+  const f = e.dataTransfer.files[0];
+  if (f && f.type === 'application/pdf') loadPdf(f);
+}
+
+let currentPdfPage = null;
+
+function loadPdf(file) {
+  if (!file) return;
+  document.getElementById('pdf-nom').textContent = file.name;
+  chargerPdfJs(() => {
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      pdfjsLib.getDocument({data: e.target.result}).promise.then(pdf => {
+        pdf.getPage(1).then(page => {
+          currentPdfPage = page;
+          const vp = page.getViewport({scale: 1.6});
+          const canvas = document.getElementById('pdf-canvas');
+          canvas.height = vp.height;
+          canvas.width = vp.width;
+          page.render({canvasContext: canvas.getContext('2d'), viewport: vp}).promise.then(() => {
+            document.getElementById('btn-lire').style.display = 'inline-flex';
+          });
+          document.getElementById('bloc-upload').style.display = 'none';
+          document.getElementById('pdf-viewer-wrap').style.display = 'block';
+          document.getElementById('bloc-saisie').style.display = 'block';
+          setStep(2);
+        });
+      });
+    };
+    reader.readAsArrayBuffer(file);
+  });
+}
+
+// ══════════════════════════════════
+// LECTURE AUTOMATIQUE DU PDF
+// ══════════════════════════════════
+async function lireNombresPdf() {
+  if (!currentPdfPage) return;
+  const btn  = document.getElementById('btn-lire');
+  const hint = document.getElementById('pdf-hint');
+  btn.textContent = '⏳ Lecture…';
+  btn.disabled = true;
+
+  try {
+    const tc = await currentPdfPage.getTextContent();
+    const items = tc.items.map(it => ({
+      str: it.str.trim(),
+      x: Math.round(it.transform[4]),
+      y: Math.round(it.transform[5])
+    })).filter(it => it.str.length > 0);
+
+    const isNum = s => /^[\d\/]+$/.test(s) && s.length <= 6;
+    const norm  = s => s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+    const dist  = (a, b) => Math.sqrt((a.x-b.x)**2 + (a.y-b.y)**2);
+    const numItems = items.filter(it => isNum(it.str));
+
+    // ÉTAPE 1 : INCLUSION
+    const yGroups = [];
+    items.forEach(it => {
+      const g = yGroups.find(g => Math.abs(g.y - it.y) < 8);
+      if (g) g.items.push(it); else yGroups.push({y: it.y, items: [it]});
+    });
+    yGroups.sort((a,b) => b.y - a.y);
+
+    let incHeader = null;
+    for (const g of yGroups) {
+      if (g.items.filter(it => /^[1-9]$/.test(it.str)).length >= 7) { incHeader = g; break; }
+    }
+
+    const incUsed = new Set();
+    const inclusion = {};
+    if (incHeader) {
+      const headers = incHeader.items.filter(it => /^[1-9]$/.test(it.str)).sort((a,b) => a.x-b.x);
+      headers.forEach(h => {
+        const i = numItems.findIndex(n => n.x === h.x && n.y === h.y);
+        if (i >= 0) incUsed.add(i);
+      });
+      headers.forEach(h => {
+        const idx = parseInt(h.str);
+        const cands = numItems.map((n,i) => ({n,i}))
+          .filter(({n,i}) => !incUsed.has(i) && Math.abs(n.x-h.x) < 28 && Math.abs(h.y-n.y) > 2 && Math.abs(h.y-n.y) < 120)
+          .sort((a,b) => Math.abs(a.n.y-h.y) - Math.abs(b.n.y-h.y));
+        if (cands.length) { inclusion[idx] = cands[0].n.str; incUsed.add(cands[0].i); }
+      });
+    }
+
+    // ÉTAPE 2 : RECONSTRUCTION DES LABELS
+    // Groupe par y (±4px), coupe si gap x > 80px
+    const rawLines = [];
+    items.forEach(it => {
+      const rl = rawLines.find(l => Math.abs(l.y - it.y) < 4);
+      if (rl) rl.items.push(it); else rawLines.push({y: it.y, items: [it]});
+    });
+
+    const reconLines = [];
+    function flushGroup(grp, y) {
+      const s = [...grp].sort((a,b) => a.x-b.x);
+      const text = s.map(it => it.str).join('');
+      const cx = s.reduce((sum,it) => sum + it.x, 0) / s.length;
+      reconLines.push({text, x: cx, y});
+    }
+    rawLines.forEach(rl => {
+      const sorted = [...rl.items].sort((a,b) => a.x-b.x);
+      let group = [sorted[0]];
+      for (let i = 1; i < sorted.length; i++) {
+        if (sorted[i].x - sorted[i-1].x > 80) { flushGroup(group, rl.y); group = [sorted[i]]; }
+        else group.push(sorted[i]);
+      }
+      flushGroup(group, rl.y);
+    });
+
+    // ÉTAPE 3 : MATCHING LABEL → VALEUR
+    const LABEL_KEYS = {
+      'cdv':    ['chemin de vie','chemin'],
+      'exp':    ['expression'],
+      'voy':    ['voyelles','voyelle'],
+      'con':    ['consonnes','consonne'],
+      'jour':   ['jour'],
+      'mois':   ['mois'],
+      'annee':  ['annee'],
+      'prenom': ['prenom'],
+      'nom':    ['nom'],
+    };
+
+    const labelAnchors = {};
+    Object.entries(LABEL_KEYS).forEach(([key, kws]) => {
+      for (const kw of kws) {
+        const found = reconLines.find(l => !isNum(l.text) && norm(l.text).includes(norm(kw)));
+        if (found) { labelAnchors[key] = found; break; }
+      }
+    });
+
+    const sortedKeys = Object.keys(labelAnchors)
+      .sort((a,b) => (labelAnchors[b]?.text.length||0) - (labelAnchors[a]?.text.length||0));
+
+    const usedIdxs = new Set(incUsed);
+    const result = {};
+
+    sortedKeys.forEach(key => {
+      const anchor = labelAnchors[key];
+      if (!anchor) return;
+      if (key === 'nom' && norm(anchor.text).includes('prenom')) return;
+      let best = null, bestIdx = -1, bestDist = Infinity;
+      numItems.forEach((n,i) => {
+        if (usedIdxs.has(i)) return;
+        const d = dist({x: anchor.x, y: anchor.y}, n);
+        if (d < bestDist) { bestDist = d; best = n; bestIdx = i; }
+      });
+      if (best) { result[key] = best.str; usedIdxs.add(bestIdx); }
+    });
+
+    // Cas Prénom+Nom en groupe fusionné
+    const pnLine = reconLines.find(l => norm(l.text).includes('prenom') && norm(l.text).includes('nom') && !isNum(l.text));
+    if (pnLine && (!result['prenom'] || !result['nom'])) {
+      const closest = numItems.map((n,i) => ({n,i,d: dist({x:pnLine.x,y:pnLine.y},n)}))
+        .filter(({i}) => !usedIdxs.has(i))
+        .sort((a,b) => a.d-b.d);
+
+      if (!result['prenom'] && !result['nom']) {
+        // Les deux manquent : prend les 2 plus proches, gauche=prénom, droite=nom
+        const two = closest.slice(0,2).sort((a,b) => a.n.x-b.n.x);
+        if (two.length >= 1) { result['prenom'] = two[0].n.str; usedIdxs.add(two[0].i); }
+        if (two.length >= 2) { result['nom']    = two[1].n.str; usedIdxs.add(two[1].i); }
+      } else if (!result['nom']) {
+        // Prénom déjà trouvé, prend juste le plus proche pour Nom
+        if (closest.length) { result['nom'] = closest[0].n.str; usedIdxs.add(closest[0].i); }
+      } else if (!result['prenom']) {
+        // Nom déjà trouvé, prend juste le plus proche pour Prénom
+        if (closest.length) { result['prenom'] = closest[0].n.str; usedIdxs.add(closest[0].i); }
+      }
+    }
+
+    // ÉTAPE 4 : Jour + Mois calculé
+    if (!result['moment'] && result['jour'] && result['mois']) {
+      let sum = parseInt(result['jour']) + parseInt(result['mois']);
+      while (sum > 9 && sum !== 11 && sum !== 22 && sum !== 33)
+        sum = String(sum).split('').reduce((a,d) => a+parseInt(d), 0);
+      result['moment'] = String(sum);
+    }
+
+    // REMPLISSAGE
+    const MAP = {cdv:'s-cdv',exp:'s-exp',voy:'s-voy',con:'s-con',
+      jour:'s-jour',mois:'s-mois',annee:'s-annee',prenom:'s-prenom',nom:'s-nom',moment:'s-moment'};
+    let filled = 0;
+    Object.entries(MAP).forEach(([key,id]) => {
+      if (result[key]) { document.getElementById(id).value = result[key]; filled++; }
+    });
+    for (let i = 1; i <= 9; i++) {
+      if (inclusion[i] !== undefined) { document.getElementById('i'+i).value = inclusion[i]; filled++; }
+    }
+    majRedondances();
+
+    const dbg = document.getElementById('debug-pdf');
+    if (dbg) dbg.remove();
+
+    if (filled > 0) {
+      hint.innerHTML = '✅ <strong>' + filled + ' case' + (filled>1?'s':'') + ' préremplie' + (filled>1?'s':'') + '</strong> — vérifie et complète si nécessaire.';
+      hint.style.color = 'var(--vert)';
+    } else {
+      hint.innerHTML = '⚠️ Aucune valeur détectée. Saisis manuellement.';
+      hint.style.color = '#a05000';
+    }
+  } catch(e) {
+    console.error(e);
+    hint.innerHTML = '⚠️ Erreur lors de la lecture. Saisis les nombres manuellement.';
+    hint.style.color = '#c0392b';
+  }
+  btn.textContent = '🔍 Lire les nombres';
+  btn.disabled = false;
+}
+
+function resetPdf() {
+  document.getElementById('bloc-upload').style.display = 'block';
+  document.getElementById('pdf-viewer-wrap').style.display = 'none';
+  document.getElementById('bloc-saisie').style.display = 'none';
+  document.getElementById('file-pdf').value = '';
+  setStep(1);
+}
+
+function passerSansPdf() {
+  document.getElementById('bloc-upload').style.display = 'none';
+  document.getElementById('bloc-saisie').style.display = 'block';
+  setStep(2);
+}
+
+// ══════════════════════════════════
+// SAISIE & REDONDANCES
+// ══════════════════════════════════
+function getNormalisé(v) {
+  if (!v) return '';
+  return v.trim().split('/')[0].trim();
+}
+
+// Pour la recherche dans LIENS : réduit les nombres maîtres à leur base
+function getLienNb(n) {
+  const masters = {'11':'2','22':'4','33':'6'};
+  return masters[n] || n;
+}
+
+function getLabelNb(n) {
+  const m = {'1':'Action','2':'Sensibilité','3':'Expression','4':'Structure',
+    '5':'Liberté','6':'Harmonie','7':'Analyse','8':'Puissance','9':'Collectif',
+    '11':'Intuition','22':'Construction','33':'Amour'};
+  return m[n] || n;
+}
+
+function majRedondances() {
+  const champs = [
+    {id:'s-cdv',label:'Chemin de vie'},
+    {id:'s-exp',label:'Expression'},
+    {id:'s-voy',label:'Voyelles'},
+    {id:'s-con',label:'Consonnes'},
+    {id:'s-jour',label:'Jour'},
+    {id:'s-mois',label:'Mois'},
+    {id:'s-annee',label:'Année de naissance'},
+    {id:'s-prenom',label:'Prénom'},
+    {id:'s-nom',label:'Nom'},
+    {id:'s-moment',label:'Jour + Mois'},
+  ];
+
+  // Compte les occurrences par nombre normalisé
+  const comptage = {};
+  const raw = {};
+  champs.forEach(c => {
+    const v = document.getElementById(c.id).value.trim();
+    if (!v) return;
+    const n = getNormalisé(v);
+    if (!n) return;
+    comptage[n] = (comptage[n] || 0) + 1;
+    raw[n] = v; // garde la forme originale (33/6 etc.)
+  });
+
+  const wrap = document.getElementById('redondances-wrap');
+  const badges = document.getElementById('redondances-badges');
+
+  const noms = Object.keys(comptage);
+  if (noms.length === 0) { wrap.style.display = 'none'; return; }
+  wrap.style.display = 'block';
+
+  const isMaster = n => ['11','22','33'].includes(n);
+  badges.innerHTML = noms.map(n => {
+    const redondant = comptage[n] > 1;
+    const master = isMaster(n);
+    return `<div class="badge-nb ${redondant?'redondant':''} ${master?'master':''}">
+      ${raw[n]} — ${getLabelNb(n)}
+      ${redondant ? `<span class="count">${comptage[n]}×</span>` : ''}
+    </div>`;
+  }).join('');
+}
+
+// ══════════════════════════════════
+// SÉLECTION
+// ══════════════════════════════════
+function allerSelection() {
+  const champs = ['s-cdv','s-exp','s-voy','s-con','s-jour','s-mois','s-annee','s-prenom','s-nom','s-moment'];
+  const valeurs = champs.map(id => document.getElementById(id).value.trim()).filter(Boolean);
+  if (valeurs.length === 0) { alert('Saisis au moins quelques nombres pour continuer.'); return; }
+
+  // Comptage redondances
+  const comptage = {};
+  const rawMap = {};
+  valeurs.forEach(v => {
+    const n = getNormalisé(v);
+    if (!n) return;
+    comptage[n] = (comptage[n] || 0) + 1;
+    rawMap[n] = v;
+  });
+
+  // Sélection automatique
+  const redondants = Object.keys(comptage).filter(n => comptage[n] > 1).sort((a,b) => comptage[b]-comptage[a]);
+  let selection = [...redondants];
+
+  // Couples stratégiques si pas assez
+  if (selection.length < 2) {
+    const cdv = getNormalisé(document.getElementById('s-cdv').value);
+    const exp = getNormalisé(document.getElementById('s-exp').value);
+    const voy = getNormalisé(document.getElementById('s-voy').value);
+    const con = getNormalisé(document.getElementById('s-con').value);
+    const couples = [[cdv,exp],[voy,con],[getNormalisé(document.getElementById('s-prenom').value), getNormalisé(document.getElementById('s-jour').value)]];
+    couples.forEach(([a,b]) => {
+      if (a && b && a !== b) {
+        if (!selection.includes(a)) selection.push(a);
+        if (!selection.includes(b)) selection.push(b);
+      }
+    });
+  }
+  selection = [...new Set(selection)].slice(0, 4);
+
+  // Hint
+  let hint = '';
+  if (redondants.length > 0) {
+    hint = `<strong>Redondances détectées :</strong> ${redondants.map(n => `${rawMap[n]} (${comptage[n]}×)`).join(', ')} — sélectionnés en priorité.`;
+  } else {
+    hint = `<strong>Pas de redondances</strong> — sélection par couples stratégiques proposée.`;
+  }
+  document.getElementById('hint-selection').innerHTML = hint;
+
+  // Toggles — tous les nombres uniques du thème
+  nombresSelec = selection.map(n => rawMap[n] || n);
+  const allN = [...new Set(valeurs.map(v => getNormalisé(v)))];
+  const isMaster = n => ['11','22','33'].includes(n);
+
+  document.getElementById('toggles').innerHTML = allN.map(n => {
+    const isOn = selection.includes(n);
+    return `<div class="toggle-btn ${isMaster(n)?'master':''} ${isOn?'on':''}" onclick="toggleNb(this,'${rawMap[n]||n}')">
+      <div class="n">${rawMap[n]||n}</div>
+      <span>${getLabelNb(n)}</span>
+    </div>`;
+  }).join('');
+
+  document.getElementById('bloc-saisie').style.display = 'none';
+  document.getElementById('bloc-selection').style.display = 'block';
+  setStep(3);
+}
+
+function toggleNb(el, raw) {
+  el.classList.toggle('on');
+  const n = getNormalisé(raw);
+  if (el.classList.contains('on')) {
+    if (!nombresSelec.some(s => getNormalisé(s) === n)) nombresSelec.push(raw);
+  } else {
+    nombresSelec = nombresSelec.filter(s => getNormalisé(s) !== n);
+  }
+}
+
+function retourSaisie() {
+  document.getElementById('bloc-selection').style.display = 'none';
+  document.getElementById('bloc-saisie').style.display = 'block';
+  setStep(2);
+}
+
+function retourSelection() {
+  document.getElementById('bloc-analyse').style.display = 'none';
+  document.getElementById('bloc-selection').style.display = 'block';
+  setStep(3);
+}
+
+// ══════════════════════════════════
+// GÉNÉRATION ANALYSE (100% locale)
+// ══════════════════════════════════
+function genererAnalyse() {
+  if (nombresSelec.length === 0) { alert('Sélectionne au moins un nombre.'); return; }
+
+  document.getElementById('bloc-selection').style.display = 'none';
+
+  const inclusion = {};
+  for (let i = 1; i <= 9; i++) {
+    inclusion[i] = parseInt(document.getElementById('i'+i).value) || 0;
+  }
+  const obsNotes = document.getElementById('notes-obs').value;
+
+  let html = '';
+
+  // CADRE
+  html += `<div style="background:#edf4f1;border-left:3px solid var(--vert-cl);padding:12px 16px;border-radius:0 6px 6px 0;margin-bottom:24px;font-size:.84rem;line-height:1.7">
+    <strong>Cadre de travail — Méthode Essence de Soi</strong><br>
+    L'objectif n'est pas d'analyser l'intégralité du thème, mais de sélectionner et approfondir ce qui sera pertinent en séance, en fonction du temps disponible et de la capacité d'intégration du client. La numérologie est un outil de lecture — le rôle du numérologue est d'ouvrir des perspectives, jamais de figer un fonctionnement.
+  </div>`;
+
+  // THÈME
+  html += `<h1>Thème & sélection</h1>`;
+  const labels = [
+    ['Chemin de vie','s-cdv'],['Expression','s-exp'],['Voyelles','s-voy'],['Consonnes','s-con'],
+    ['Jour','s-jour'],['Mois','s-mois'],['Année de naissance','s-annee'],['Prénom','s-prenom'],['Nom','s-nom'],['Jour + Mois','s-moment']
+  ];
+  html += `<div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px">`;
+  labels.forEach(([lab, id]) => {
+    const v = document.getElementById(id).value.trim();
+    if (!v) return;
+    const isSelec = nombresSelec.some(s => getNormalisé(s) === getNormalisé(v));
+    html += `<div style="background:${isSelec?'#edf4f1':'var(--gris-cl)'};border:1px solid ${isSelec?'var(--vert-cl)':'var(--border)'};border-radius:6px;padding:6px 12px;text-align:center">
+      <div style="font-size:.62rem;text-transform:uppercase;letter-spacing:.07em;color:var(--gris)">${lab}</div>
+      <div style="font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:600;color:${isSelec?'var(--vert)':'var(--text)'}">${v}</div>
+    </div>`;
+  });
+  html += `</div>`;
+
+  // Inclusion mini
+  html += `<p style="font-size:.72rem;text-transform:uppercase;letter-spacing:.08em;color:var(--gris);margin-bottom:6px">Inclusion (nuance uniquement)</p>
+  <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:20px">`;
+  for (let i = 1; i <= 9; i++) {
+    const v = inclusion[i];
+    const high = v >= 5;
+    const zero = v === 0;
+    html += `<div style="text-align:center;min-width:32px">
+      <div style="font-size:.62rem;color:var(--gris)">${i}</div>
+      <div style="font-family:'Playfair Display',serif;font-size:1rem;font-weight:600;
+        background:${high?'#edf4f1':'var(--gris-cl)'};color:${zero?'#bbb':high?'var(--vert)':'var(--text)'};
+        padding:3px 6px;border-radius:4px">${v}</div>
+    </div>`;
+  }
+  html += `</div>`;
+
+  if (obsNotes) {
+    html += `<blockquote>${obsNotes}</blockquote>`;
+  }
+
+  html += `<p><strong>Nombres sélectionnés :</strong> ${nombresSelec.join(' · ')}</p>`;
+
+  // ANALYSE PAR NOMBRE
+  html += `<h1>Analyse des nombres</h1>`;
+  nombresSelec.forEach((rawN, idx) => {
+    const n = getNormalisé(rawN);
+    const f = FICHES[n];
+    if (!f) return;
+
+    html += `<h2>${f.titre}</h2>`;
+
+    // Note nombre maître
+    if (f.note) {
+      html += `<div class="tip-box" style="background:#fff8ed;border-left-color:var(--or);margin-bottom:14px">⚠️ ${f.note}</div>`;
+    }
+
+    // Mots-clés
+    html += `<p><em>${f.mots}</em></p>`;
+
+    // Besoins
+    html += `<h3>a) Besoins & talents</h3>`;
+    html += `<p>Ce nombre parle probablement d'un besoin de :</p><ul>`;
+    f.besoins.forEach(b => html += `<li>${b}</li>`);
+    html += `</ul>`;
+    html += `<p>Lorsque ces besoins sont nourris, le client peut mobiliser : <em>${f.talents.join(', ')}</em>.</p>`;
+    html += `<p><strong>Besoins nourris :</strong> ${f.nourris.join(' · ')}</p>`;
+    html += `<p><strong>Besoins non nourris :</strong> ${f.non_nourris.join(' · ')}</p>`;
+    if (f.exces.length) html += `<p><strong>À l'excès :</strong> ${f.exces.join(' · ')}</p>`;
+    html += `<p><strong>Peurs associées :</strong> ${f.peurs.join(' · ')}</p>`;
+
+    // Nuance inclusion
+    html += `<h3>b) Nuance avec l'inclusion</h3>`;
+    const incVal = inclusion[parseInt(n)] || 0;
+    let nuanceInc = '';
+    if (incVal === 0) {
+      const z = ZERO_INCLUSION[n];
+      if (z) {
+        nuanceInc = `<span style="color:var(--vert-cl);font-weight:600">✦ Dans le constructif :</span> ${z.constructif}<br><br>
+        <span style="color:var(--rouge);font-weight:600">↓ En manque :</span> ${z.manque}<br><br>
+        <span style="color:var(--or);font-weight:600">↑ En excès :</span> ${z.exces}<br><br>
+        <span style="color:var(--gris);font-style:italic">${z.rapport}</span>`;
+      }
+    } else {
+      const lienKey = [parseInt(getLienNb(n)), parseInt(getLienNb(String(incVal)))]
+        .sort((a,b) => a-b).join('-');
+      const nuanceText = INC_NUANCES[lienKey] || INC_NB_DESC[n] || '';
+      if (nuanceText) nuanceInc = nuanceText;
+    }
+    if (nuanceInc) html += `<p>${nuanceInc}</p>`;
+
+    // Lien avec précédent
+    if (idx > 0) {
+      html += `<h3>c) Lien avec ${nombresSelec.slice(0,idx).join(' et ')}</h3>`;
+      nombresSelec.slice(0, idx).forEach(prevRaw => {
+        const prevN = getNormalisé(prevRaw);
+        const key = [parseInt(getLienNb(prevN)), parseInt(getLienNb(n))].sort((a,b)=>a-b).join('-');
+        const lien = LIENS[key];
+        html += `<p><strong>Lien ${prevRaw} — ${rawN} :</strong> ${lien || 'Ces deux nombres créent une dynamique à explorer ensemble en séance, en cherchant complémentarités et tensions structurantes.'}</p>`;
+      });
+    }
+
+    html += `<hr>`;
+  });
+
+  // BESOINS FONDAMENTAUX
+  html += `<h1>Besoins fondamentaux (Tony Robbins)</h1>`;
+  const besoinsMap = {
+    '4':['Sécurité/Certitude','sécurité, contrôle, stabilité, routines'],
+    '3':['Variété','nouveauté, stimulation, surprise'],
+    '5':['Variété','nouveauté, stimulation, surprise'],
+    '1':['Importance','se sentir reconnu, passer en premier, performance'],
+    '2':['Amour & Connexion','être en lien, connecté aux autres'],
+    '6':['Amour & Connexion','être en lien, connecté aux autres'],
+    '7':['Épanouissement','apprendre, progresser, agrandir ses capacités'],
+    '8':['Contribution','donner au-delà de soi, avoir un impact, transmettre'],
+    '9':['Contribution','donner au-delà de soi, avoir un impact, transmettre'],
+  };
+  const besoinsPresents = {};
+  nombresSelec.forEach(raw => {
+    const n = getNormalisé(raw);
+    if (besoinsMap[n]) {
+      const [nom, desc] = besoinsMap[n];
+      if (!besoinsPresents[nom]) besoinsPresents[nom] = {desc, nombres: []};
+      besoinsPresents[nom].nombres.push(raw);
+    }
+  });
+  if (Object.keys(besoinsPresents).length > 0) {
+    html += `<ul>`;
+    Object.entries(besoinsPresents).forEach(([nom, {desc, nombres}]) => {
+      html += `<li><strong>${nom}</strong> (${nombres.join(', ')}) — ${desc}</li>`;
+    });
+    html += `</ul>`;
+  } else {
+    html += `<p>Explore les besoins fondamentaux en lien avec les nombres travaillés.</p>`;
+  }
+
+  // TIPS
+  html += `<h1>Tips en cas de déséquilibre</h1>`;
+  nombresSelec.forEach(raw => {
+    const n = getNormalisé(raw);
+    const f = FICHES[n];
+    if (!f || !f.tips) return;
+    html += `<h3>${f.titre}</h3>`;
+    f.tips.forEach(t => html += `<div class="tip-box">→ ${t}</div>`);
+  });
+
+  // QUESTIONS OUVERTES
+  html += `<h1>Questions ouvertes pour la séance</h1>`;
+  nombresSelec.forEach(raw => {
+    const n = getNormalisé(raw);
+    const f = FICHES[n];
+    if (!f || !f.questions) return;
+    html += `<h3>Pour le ${raw}</h3>`;
+    f.questions.forEach(q => html += `<div class="question-box">❓ ${q}</div>`);
+  });
+
+  // Questions universelles
+  html += `<h3>Pour entrer en séance</h3>
+  <div class="question-box">❓ Qu'est-ce qui t'a donné envie de faire cette séance aujourd'hui ?</div>
+  <div class="question-box">❓ Sur quoi tu aimerais avoir plus de clarté en ce moment ?</div>
+  <div class="question-box">❓ Quand je te dis ça, qu'est-ce que ça réveille chez toi ?</div>
+  <div class="question-box">❓ Quand ce besoin est nourri, comment tu te sens concrètement ?</div>
+  <div class="question-box">❓ Qu'est-ce que tu n'avais jamais formulé comme ça avant aujourd'hui ?</div>`;
+
+  // SYNTHÈSE
+  html += `<h1>Synthèse de préparation</h1>`;
+  html += `<h3>Axes principaux</h3>
+  <p>Nombres travaillés : <strong>${nombresSelec.join(' · ')}</strong>. ${nombresSelec.length > 1 ? `Lien central à explorer : la dynamique entre ces énergies et comment elles s'alimentent ou se heurtent.` : ''}</p>`;
+
+  html += `<h3>Besoins centraux identifiés</h3><ul>`;
+  nombresSelec.forEach(raw => {
+    const f = FICHES[getNormalisé(raw)];
+    if (f) html += `<li><strong>${raw}</strong> — ${f.besoins[0]}, ${f.besoins[1]||''}.</li>`;
+  });
+  html += `</ul>`;
+
+  html += `<h3>Points de vigilance</h3><ul>`;
+  nombresSelec.forEach(raw => {
+    const f = FICHES[getNormalisé(raw)];
+    if (f && f.non_nourris) html += `<li><strong>${raw}</strong> en déséquilibre : ${f.non_nourris[0]}.</li>`;
+  });
+  html += `</ul>`;
+
+  html += `<h3>Talents & potentiels à valoriser</h3><ul>`;
+  nombresSelec.forEach(raw => {
+    const f = FICHES[getNormalisé(raw)];
+    if (f) html += `<li><strong>${raw}</strong> — ${f.talents[0]}.</li>`;
+  });
+  html += `</ul>`;
+
+  html += `<h3>Fil conducteur</h3>
+  <p>Garder en toile de fond : comment ces nombres se vivent-ils <em>ensemble</em> au quotidien ? Quelles tensions, quelles complémentarités le client reconnaît-il dans son vécu ?</p>`;
+
+  html += `<blockquote>Cette synthèse est un support de préparation. La séance reste un espace vivant, ajusté à ce que le client amènera.</blockquote>`;
+
+  // Afficher
+  document.getElementById('analyse-content').innerHTML = html;
+  document.getElementById('analyse-titre').textContent = 'Analyse — ' + nombresSelec.join(' · ');
+  document.getElementById('bloc-analyse').style.display = 'block';
+  setStep(4);
+
+  // Générer prompt contexte
+  genererPrompt();
+
+  document.getElementById('bloc-analyse').scrollIntoView({behavior:'smooth'});
+}
+
+// ══════════════════════════════════
+// PROMPT DE CONTEXTE
+// ══════════════════════════════════
+function genererPrompt() {
+  const labels = [
+    ['Chemin de vie','s-cdv'],['Expression','s-exp'],['Voyelles','s-voy'],['Consonnes','s-con'],
+    ['Jour','s-jour'],['Mois','s-mois'],['Année de naissance','s-annee'],['Prénom','s-prenom'],['Nom','s-nom'],['Jour + Mois','s-moment']
+  ];
+  const theme = labels.map(([l,id]) => {
+    const v = document.getElementById(id).value.trim();
+    return v ? `- ${l} : ${v}` : null;
+  }).filter(Boolean).join('\n');
+
+  const inclusion = [];
+  for (let i = 1; i <= 9; i++) {
+    const v = parseInt(document.getElementById('i'+i).value)||0;
+    inclusion.push(`${i}→${v}`);
+  }
+
+  const clientPrenom = document.getElementById('client-prenom')?.value.trim() || '';
+  const clientDemande = document.getElementById('client-demande')?.value.trim() || '';
+  const liensManuels = document.getElementById('liens-manuels')?.value.trim() || '';
+  const obsNotes = document.getElementById('notes-obs')?.value.trim() || '';
+  let pagesCible = parseInt(document.getElementById('pages-cible')?.value || '7');
+  if (!Number.isFinite(pagesCible)) pagesCible = 7;
+  pagesCible = Math.min(20, Math.max(3, pagesCible));
+  const motsCible = pagesCible * 350;
+
+  const fiches = nombresSelec.map(raw => {
+    const n = getNormalisé(raw);
+    const f = FICHES[n];
+    if (!f) return '';
+    return `### ${f.titre}
+Besoins : ${f.besoins.join(' · ')}
+Talents : ${f.talents.join(' · ')}
+Besoins nourris : ${f.nourris.join(' · ')}
+Besoins non nourris : ${f.non_nourris.join(' · ')}
+À l'excès : ${(f.exces || []).join(' · ')}
+Peurs : ${f.peurs.join(' · ')}`;
+  }).join('\n\n');
+
+  // Liens entre les nombres sélectionnés
+  const liensPrompt = [];
+  for (let i = 0; i < nombresSelec.length; i++) {
+    for (let j = i+1; j < nombresSelec.length; j++) {
+      const a = getNormalisé(nombresSelec[i]);
+      const b = getNormalisé(nombresSelec[j]);
+      const key = [parseInt(getLienNb(a)), parseInt(getLienNb(b))].sort((x,y)=>x-y).join('-');
+      const txt = LIENS[key];
+      if (txt) liensPrompt.push(`${nombresSelec[i]} — ${nombresSelec[j]} : ${txt}`);
+    }
+  }
+
+  // Nuances inclusion pour chaque nombre sélectionné : données internes, à traduire en polarités humaines dans le rendu final
+  const nuancesPrompt = nombresSelec.map(raw => {
+    const n = getNormalisé(raw);
+    const incVal = (function(){
+      for(let i=1;i<=9;i++){
+        const el = document.getElementById('i'+i);
+        if(String(i)===getLienNb(n) && el) return parseInt(el.value)||0;
+        if(String(i)===n && el) return parseInt(el.value)||0;
+      }
+      return 0;
+    })();
+    if (incVal === 0) {
+      const baseN = getLienNb(n);
+      const z = ZERO_INCLUSION[baseN];
+      return z ? `${raw} — polarité à nuancer à partir de : Manque possible : ${z.manque} | Excès possible : ${z.exces} | Enjeu : ${z.rapport}` : null;
+    } else {
+      const key = [parseInt(getLienNb(n)), parseInt(getLienNb(String(incVal)))].sort((a,b)=>a-b).join('-');
+      const txt = INC_NUANCES[key];
+      return txt ? `${raw} — nuance quotidienne possible : ${txt}` : null;
+    }
+  }).filter(Boolean).join('\n\n');
+
+  const prompt = `Tu es un assistant expert en numérologie, formé à la méthode Essence de Soi (formation Amandine).
+
+Ta mission est de rédiger un COMPTE RENDU PROFESSIONNEL COMPLET, utile dans un contexte de réflexion professionnelle, d'évolution ou de reconversion. Le document doit aider la personne à mieux comprendre son fonctionnement au travail, à identifier ses besoins, ses conditions d'épanouissement, ses tensions et des pistes concrètes pour la suite.
+
+## DESTINATAIRE ET OBJECTIF
+- Prénom : ${clientPrenom || 'non précisé'}
+- Demande / problématique : ${clientDemande || 'non précisée — rester centré sur le fonctionnement professionnel et les pistes d’évolution'}
+- Longueur visée : environ ${pagesCible} pages PDF, soit environ ${motsCible} mots ± 15 %. Ne remplis pas artificiellement : privilégie la densité, la clarté et la pertinence.
+
+## POSTURE DE RÉDACTION
+- Adresse-toi DIRECTEMENT à la personne en utilisant « tu ».
+- Ne parle jamais d’elle comme d’un cas d’étude (« le thème de X montre », « cette personne », etc.).
+- Le texte doit être humain, chaleureux, précis et vivant, pas scolaire ni robotique.
+- Ne définis jamais une identité figée. Présente des dynamiques, des besoins, des tensions et des hypothèses à vérifier.
+- Reste nuancé, mais ne répète pas mécaniquement « probablement », « il est possible que », « tu pourrais ». Varie les formulations.
+- Évite les répétitions et les longues listes de caractéristiques. Relie les idées entre elles.
+- Les formulations les plus fortes doivent être courtes, mémorables et facilement mises en évidence dans un PDF.
+
+## RÈGLE CENTRALE D’INTERPRÉTATION
+Un nombre ne suffit JAMAIS à conclure qu’un comportement est réellement exprimé.
+
+Distingue toujours :
+1. le BESOIN potentiel ;
+2. la FACILITÉ / le TALENT possible ;
+3. le COMPORTEMENT réellement exprimé ;
+4. une éventuelle DIFFICULTÉ à exprimer cette énergie ;
+5. la PRÉFÉRENCE ;
+6. la SOUTENABILITÉ de ce fonctionnement dans la durée.
+
+Exemple : un besoin d’autonomie ne signifie pas automatiquement aimer travailler seul, prendre spontanément les devants ou ne pas avoir besoin de validation.
+
+Avant d’affirmer un fonctionnement, cherche si plusieurs éléments du thème vont dans le même sens. Si plusieurs données se nuancent ou se contredisent, fais ressortir le paradoxe au lieu de trancher arbitrairement.
+
+Recherche notamment les tensions utiles comme :
+- liberté + besoin de cadre ;
+- autonomie + besoin de soutien ou de validation ;
+- besoin d’humain + besoin de solitude pour récupérer ;
+- capacité à aider + coût émotionnel élevé ;
+- envie de transmettre + absence d’envie d’enseigner ;
+- besoin d’action + besoin de comprendre avant d’agir ;
+- capacité à manager + difficulté à poser des limites émotionnelles.
+
+Ces tensions sont souvent plus intéressantes que les caractéristiques isolées.
+
+## HIÉRARCHIE DE LECTURE
+1. Pars d’abord de la demande / problématique formulée.
+2. Identifie seulement 3 à 5 GRANDES DYNAMIQUES réellement importantes.
+3. Cherche ensuite les liens entre plusieurs nombres qui expliquent ces dynamiques.
+4. Recherche les tensions, contradictions apparentes et équilibres à trouver.
+5. Utilise l’Inclusion UNIQUEMENT pour nuancer une dynamique déjà repérée. Elle ne doit jamais créer seule une conclusion importante.
+6. Ne cherche pas à utiliser toutes les données disponibles. Privilégie la pertinence à l’exhaustivité.
+7. Si les informations manuelles ajoutées par Amandine contredisent une formulation générique de la base, les informations manuelles sont PRIORITAIRES.
+
+## RÈGLES SUR LE LANGAGE NUMÉROLOGIQUE
+- Dans le corps du rapport, évite « ton 7 », « chez ton 3 », « ton 8 veut… ».
+- Parle plutôt de « la partie de toi qui… », « ton besoin de… », « une dynamique de ton fonctionnement… », « une autre partie de toi… ».
+- Ne dis JAMAIS au lecteur : « ton 8 est absent de l’Inclusion », « tu as un zéro en 7 », « ton 1 vaut 5 », etc.
+- Les informations d’Inclusion sont des DONNÉES INTERNES. Traduis-les en polarités, tensions ou apprentissages humains.
+- Tu peux néanmoins ajouter un petit encadré pédagogique séparé « Les nombres qui soutiennent cette lecture » avec 3 à 6 nombres et 3 à 6 mots-clés maximum chacun. Cet encadré sert à comprendre d’où vient l’analyse, sans envahir le texte.
+
+## THÈME
+${theme}
+
+Inclusion — donnée interne de nuance uniquement :
+${inclusion.join(' | ')}
+
+## NOMBRES SÉLECTIONNÉS POUR CETTE LECTURE
+${nombresSelec.join(' · ')}
+
+## FICHES DE RÉFÉRENCE
+${fiches}
+
+## LIENS AUTOMATIQUES ENTRE LES NOMBRES
+Ces liens sont des hypothèses de travail, pas des vérités. Reformule-les et nuance-les en fonction de l’ensemble du thème.
+
+${liensPrompt.length ? liensPrompt.join('\n\n') : 'Aucun lien automatique calculé.'}
+
+## NUANCES ISSUES DE L’INCLUSION — DONNÉES INTERNES
+Ne reprends jamais les formulations techniques telles quelles dans le rapport. Traduis-les en fonctionnement humain.
+
+${nuancesPrompt || 'Aucune nuance calculée.'}
+
+## INFORMATIONS / LIENS AJOUTÉS MANUELLEMENT PAR AMANDINE — PRIORITAIRES
+${liensManuels || 'Aucun ajout manuel.'}
+
+## NOTES D’OBSERVATION D’AMANDINE
+${obsNotes || 'Aucune note supplémentaire.'}
+
+## MÉTHODE POUR LES PISTES PROFESSIONNELLES
+Ne passe pas directement des nombres à une liste de métiers.
+
+Raisonne dans cet ordre :
+1. FONCTIONS qui semblent nourrissantes : comprendre, conseiller, créer, organiser, analyser, transmettre, accompagner, résoudre, coordonner, etc.
+2. CONDITIONS DE TRAVAIL : autonomie, équipe, calme, rythme, cadre, variété, profondeur, niveau d’interaction, visibilité des résultats, etc.
+3. SECTEURS possibles dans lesquels ces fonctions peuvent s’exprimer.
+4. MÉTIERS concrets à explorer.
+
+Ne recommande jamais un métier seulement parce que la personne semble avoir les compétences pour le faire. Distingue toujours :
+- « je peux être bonne dans ce rôle » ;
+- « ce rôle nourrit réellement mes besoins » ;
+- « ce rôle est soutenable pour moi au quotidien ».
+
+Pour les pistes les plus pertinentes, indique aussi brièvement CE QUI EST À VÉRIFIER : charge émotionnelle, quantité d’interactions, rigidité du cadre, isolement, pression, administratif, management, etc.
+
+## POINT DE BASCULE / « VRAIE QUESTION »
+Avant de développer le rapport, demande-toi si la problématique formulée masque un enjeu plus fondamental.
+
+Exemples de logique :
+- « Le sujet n’est peut-être pas de trouver un autre métier, mais de changer la manière dont tu exerces le tien. »
+- « Ta difficulté semble moins être de trouver des idées que de choisir lesquelles méritent réellement ton énergie. »
+- « Le véritable enjeu pourrait être moins le secteur que l’environnement dans lequel tu travailles. »
+
+N’invente PAS un plot twist pour faire joli. Utilise-le seulement s’il est solidement soutenu par plusieurs éléments du thème et/ou la demande.
+
+## STRUCTURE DU COMPTE RENDU
+Rédige directement le document final. Ne commente pas tes instructions.
+
+### 1. Ouverture — ce qui ressort de ton fonctionnement professionnel
+Une entrée courte, adressée directement à la personne. Donne une vision globale AVANT d’entrer dans le détail. Si pertinent, termine cette introduction par la « vraie question » ou le point de bascule identifié.
+
+### 2. Tes grandes dynamiques professionnelles
+3 à 5 dynamiques seulement. Pour chacune, relie plusieurs nombres et explique comment elles peuvent se manifester concrètement au travail.
+
+### 3. Tes forces et tes moteurs profonds
+Ne te contente pas de dire CE qu’elle sait faire. Cherche aussi POURQUOI elle aime le faire : aider, comprendre, rendre utile, créer, améliorer, sécuriser, transmettre, avoir un impact, etc.
+
+### 4. Ton environnement professionnel idéal
+C’est une section CENTRALE. Distingue :
+- ce qui la nourrit ;
+- ce qui la stimule ;
+- ce qui la sécurise ;
+- son rythme relationnel idéal ;
+- ce qui peut l’épuiser ;
+- ce qui peut l’ennuyer.
+
+N’assimile jamais « besoin de solitude pour récupérer » à « besoin de travailler seul », ni « aimer l’humain » à « aimer être sollicité en permanence ».
+
+### 5. Ce qui pourrait devenir non négociable
+Une synthèse courte et concrète, facilement exploitable pour comparer de futures opportunités professionnelles.
+
+### 6. Tes tensions et points d’attention
+Présente les tensions comme des équilibres à trouver, pas comme des défauts. Pour chaque tension majeure, ajoute si pertinent une courte ligne « Action clé » ou « À expérimenter ».
+
+### 7. Fonctions, secteurs et métiers à explorer
+Commence par les fonctions, puis les secteurs, puis donne des exemples de métiers. Les métiers sont des pistes d’exploration, jamais des prescriptions. Pour quelques pistes, précise « Pourquoi ça peut convenir » et « À vérifier ».
+
+### 8. Les nombres qui soutiennent cette lecture
+Petit encadré pédagogique, très synthétique : 3 à 6 nombres maximum avec leurs mots-clés. Aucun jargon sur l’Inclusion.
+
+### 9. Tes prises de conscience clés
+3 à 5 phrases courtes et fortes, de type punchline. Elles doivent condenser les croisements les plus importants du rapport et pouvoir être mises en exergue visuellement.
+
+### 10. Tes challenges actuels
+2 à 4 axes maximum, formulés comme des invitations à progresser ou expérimenter, pas comme des défauts.
+
+### 11. Tes mises en action possibles
+3 à 5 actions simples, réalistes et directement reliées aux tensions identifiées. Évite les conseils génériques.
+
+### 12. Bilan personnel — relier la théorie à l’expérience
+Termine par un petit exercice utilisable directement par la personne :
+
+| Expérience professionnelle | Ce qui m’a nourrie | Ce qui m’a coûté | Ce que j’en retiens |
+|---|---|---|---|
+| … | … | … | … |
+
+Puis ajoute quatre invitations courtes à compléter :
+- Ce que je veux absolument retrouver dans ma prochaine étape : …
+- Ce que je ne veux plus reproduire : …
+- Mes 3 non-négociables : …
+- Ce que j’ai envie de tester maintenant : …
+
+## QUALITÉ ATTENDUE
+Le rapport doit donner la sensation que les informations ont été ARTICULÉES entre elles, pas simplement additionnées.
+La valeur vient surtout des liens, des nuances, des tensions et de la traduction concrète dans la vie professionnelle.
+Évite de répéter la même idée sous trois formulations différentes uniquement pour allonger le document.
+Fais ressortir visuellement les phrases de prise de conscience les plus fortes.
+
+Rédige maintenant le compte rendu complet.`;
+
+  document.getElementById('prompt-ta').value = prompt;
+  document.getElementById('prompt-wrap').style.display = 'block';
+}
+
+function copierPrompt() {
+  const ta = document.getElementById('prompt-ta');
+  navigator.clipboard.writeText(ta.value).then(() => {
+    document.getElementById('copy-lbl').textContent = '✓ Copié !';
+    setTimeout(() => document.getElementById('copy-lbl').textContent = '📋 Copier', 2500);
+  }).catch(() => { ta.select(); document.execCommand('copy'); });
+}
+
+// ══════════════════════════════════
+// UI
+// ══════════════════════════════════
+function setStep(n) {
+  ['st1','st2','st3','st4'].forEach((id, i) => {
+    const el = document.getElementById(id);
+    el.className = 'flow-step';
+    if (i+1 < n) el.classList.add('done');
+    else if (i+1 === n) el.classList.add('active');
+  });
+}
+</script>
+</body>
+</html>
